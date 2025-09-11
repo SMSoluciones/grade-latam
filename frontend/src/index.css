@@ -1,0 +1,39 @@
+@import "tailwindcss";
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
+
+@theme {
+  --color-primary: #2c9179;
+  --color-primary-light: #d4e7e1;
+  --color-secondary: #ef7e70;
+
+  ----default-font-family: "Roboto", sans-serif;
+}
+
+/* Define las animaciones personalizadas */
+@layer theme {
+  @keyframes randomMove {
+    0% {
+      transform: translate(0, 0) scale(1);
+    }
+    25% {
+      transform: translate(200px, -30px) scale(1.5);
+    }
+    50% {
+      transform: translate(-80px, 60px) scale(1);
+    }
+    75% {
+      transform: translate(30px, -50px) scale(1.1);
+    }
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+  }
+
+  .animate-random-move {
+    animation: randomMove 10s infinite ease-in-out;
+  }
+}
+html {
+  scroll-behavior: smooth;
+}
