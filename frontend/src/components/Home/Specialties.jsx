@@ -16,7 +16,7 @@ export const Specialties = () => {
     const fetchSpecialties = async () => {
       try {
         const response = await axios.get(
-          "https://icsb-cardio.onrender.com/api/specialties" // Cambia la URL si es necesario
+          "http://localhost:8080/api/specialties" // Cambia la URL si es necesario
         ); // Cambia la URL si es necesario
         setSpecialties(response.data); // Actualiza el estado con los datos obtenidos
       } catch (error) {

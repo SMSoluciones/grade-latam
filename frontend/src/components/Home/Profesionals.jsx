@@ -19,7 +19,7 @@ const Profesionals = () => {
     const fetchProfessionals = async () => {
       try {
         const response = await axios.get(
-          "https://icsb-cardio.onrender.com/api/professionals"
+          "http://localhost:8080/api/professionals"
         ); // Cambia la URL si es necesario
         setProfessionals(response.data); // Actualiza el estado con los datos obtenidos
       } catch (error) {
