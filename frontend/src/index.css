@@ -1,13 +1,43 @@
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(1.08);
+  }
+  20% {
+    transform: scale(0.98);
+  }
+  30% {
+    transform: scale(1.05);
+  }
+  40% {
+    transform: scale(0.97);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+  60% {
+    transform: scale(1);
+  }
+}
+
+.animate-heartbeat {
+  animation: heartbeat 10s infinite;
+  transform-origin: center center;
+}
 @import "tailwindcss";
 @import "slick-carousel/slick/slick.css";
 @import "slick-carousel/slick/slick-theme.css";
 
 @theme {
-  --color-primary: #2c9179;
-  --color-primary-light: #d4e7e1;
-  --color-secondary: #ef7e70;
+  --color-primary: #39669b;
+  --color-primary-light: #ecf1fb;
+  --color-secondary: #e11711;
+  --color-secondary-light: #4f8bd0;
 
-  ----default-font-family: "Roboto", sans-serif;
+  --default-font-family: "Epilogue", sans-serif;
 }
 
 /* Define las animaciones personalizadas */
