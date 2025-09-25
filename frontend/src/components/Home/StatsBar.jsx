@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
+import "aos/dist/aos.css";
+import AOS from "aos";
 
 const StatsBar = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+  }, []);
   return (
     <div>
       {" "}
-      {/* Cuadro de estadísticas */}
-      <div className="w-full flex justify-center items-center absolute left-0 bottom-[-150px] pb-1 mt-1">
+      <div
+        className="w-full flex justify-center items-center absolute left-0 bottom-[-70px] pb-1 mt-1"
+        data-aos="fade-up"
+      >
         <div className="flex flex-row gap-8 bg-primary rounded-full px-10 py-3 shadow-lg w-[90vw] max-w-4xl">
           <div className="flex-1 text-center text-white">
             <span className="text-5xl font-bold">25</span>
