@@ -8,10 +8,10 @@ const Footer = () => {
         <div className="flex flex-col items-center md:items-start">
           <img
             src="https://firebasestorage.googleapis.com/v0/b/icsb-project.firebasestorage.app/o/assets%2FLogoFooter.svg?alt=media&token=c9887936-9a02-4379-b74f-f4f5759cced0" // Reemplaza con la ruta de tu logo
-            alt="ICSB Logo"
+            alt="GradeLatam Logo"
             className="mb-4"
           />
-          <p>Jujuy 1540 5to Piso, Rosario, Santa Fe, Argentina CP 2000</p>
+
           {/* Redes sociales */}
           <div className="flex justify-center md:justify-start mt-6 space-x-4">
             <a href="#" aria-label="LinkedIn">
@@ -42,23 +42,22 @@ const Footer = () => {
         <div className="flex flex-col items-center md:items-start">
           <h3 className="font-bold mb-2 text-xl">Información</h3>
           <ul className="space-y-1">
-            <li>Áreas</li>
-            <li>Profesionales</li>
+            <li>Expertos</li>
+            <li>Eventos y Cursos</li>
             <li>Investigación</li>
           </ul>
         </div>
 
         {/* Turnos */}
         <div className="flex flex-col items-center md:items-start">
-          <h3 className="font-bold mb-2 text-xl">Turnos</h3>
-          <p>Solicitar turno.</p>
+          <h3 className="font-bold mb-2 text-xl">Plataforma</h3>
+          <p>Ingreso</p>
         </div>
 
         {/* Contacto */}
         <div className="flex flex-col items-center md:items-start">
           <h3 className="font-bold mb-2 text-xl">Contacto</h3>
-          <p>0341 15-224-4716</p>
-          <p>instcardiologia@icsb.com.ar</p>
+          <p>Formulario de contacto.</p>
         </div>
       </div>
 
