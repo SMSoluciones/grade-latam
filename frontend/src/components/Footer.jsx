@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-primary text-white py-12 px-6 md:py-24 md:px-32">
+    <footer className="bg-gradient-to-t from-[#244469] to-[#4786CF] text-white py-12 px-6 md:py-24 md:px-32 rounded-t-[30px]">
       <div className="container mx-auto flex flex-col md:flex-row md:justify-between md:items-start gap-12 text-center md:text-left">
         {/* Logo y dirección */}
         <div className="flex flex-col items-center md:items-start">

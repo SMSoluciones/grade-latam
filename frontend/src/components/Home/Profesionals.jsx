@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 import LorenzattiImg from "../../assets/Profesionals/Alberto-Lorenzatti.png";
 import PiskorzImg from "../../assets/Profesionals/Daniel-Piskorz.png";
@@ -45,16 +47,28 @@ const professionals = [
 ];
 
 const Profesionals = () => {
+  useEffect(() => {
+    // Inicializar AOS
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+  }, []);
+
   return (
     <section className="w-full py-19">
       <h2 className="text-4xl font-bold text-center text-[#23395d] mb-12">
         Equipo de expertos
       </h2>
       <div className="flex flex-wrap justify-center gap-8">
-        {professionals.map((prof) => (
-          <div
+        {professionals.map((prof, index) => (
+          <a
+            ECF1FB
             key={prof.id}
-            className="w-[240px] h-[350px] rounded-2xl shadow-lg overflow-hidden relative bg-[#D4D6D9] flex flex-col justify-end"
+            href={`/profesionales/${prof.id}`} // Enlace dinámico basado en el ID del profesional
+            className="w-[240px] h-[350px] rounded-2xl shadow-lg overflow-hidden relative bg-[#D4D6D9] hover:bg-gradient-to-t hover:from-[#ECF1FB] hover:to-[#4F8BD0] transition-colors duration-300 flex flex-col justify-end"
+            data-aos="fade-up"
+            data-aos-delay={index * 100} // Añade un retraso progresivo para cada tarjeta
           >
             <div className="relative w-full h-full flex flex-col justify-end">
               <img
@@ -78,7 +92,7 @@ const Profesionals = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </section>

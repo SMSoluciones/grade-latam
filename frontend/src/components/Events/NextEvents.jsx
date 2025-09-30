@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from "react";
 import EventCard from "./EventCard";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
-const API_URL = "http://localhost:3001/api/events"; // Cambia la URL según tu backend
+const API_URL = "http://localhost:3001/api/events";
 
 const NextEvents = () => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Inicializar AOS
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+
     // Simular fetch con evento mockeado
     setTimeout(() => {
       setEvents([
@@ -35,26 +43,40 @@ const NextEvents = () => {
 
   return (
     <section className="w-full py-16 mt-24">
-      <h2 className="text-4xl font-bold text-center text-[#23395d] mb-12">
+      <h2
+        className="text-4xl font-bold text-center text-[#23395d] mb-12"
+        data-aos="fade-up"
+      >
         Próximos eventos
       </h2>
       <div className="flex flex-col gap-12 items-center">
-        {loading && <div className="text-center">Cargando eventos...</div>}
-        {!loading && events.length === 0 && (
-          <div className="text-center">No hay eventos disponibles.</div>
+        {loading && (
+          <div className="text-center" data-aos="fade-up">
+            Cargando eventos...
+          </div>
         )}
-        {events.map((event) => (
-          <EventCard
+        {!loading && events.length === 0 && (
+          <div className="text-center" data-aos="fade-up">
+            No hay eventos disponibles.
+          </div>
+        )}
+        {events.map((event, index) => (
+          <div
             key={event.id}
-            image={event.image}
-            title={event.title}
-            date={event.date} // { day: '4', month: 'OCT' }
-            description={event.description}
-            link={event.link}
-          />
+            data-aos="fade-up"
+            data-aos-delay={index * 100} // Añade un retraso progresivo para cada cuadro
+          >
+            <EventCard
+              image={event.image}
+              title={event.title}
+              date={event.date} // { day: '4', month: 'OCT' }
+              description={event.description}
+              link={event.link}
+            />
+          </div>
         ))}
       </div>
-      <div className="flex justify-center mt-10">
+      <div className="flex justify-center mt-10" data-aos="fade-up">
         <a
           href="/eventos"
           className="bg-[#4669a5] text-white font-bold py-3 px-8 rounded-full text-lg shadow hover:bg-[#23395d] transition"
