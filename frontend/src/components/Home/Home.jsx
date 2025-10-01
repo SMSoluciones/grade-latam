@@ -2,10 +2,9 @@ import React from "react";
 import Header from "../Home/Header";
 import StatsBar from "../Home/StatsBar";
 import NextEvents from "../Events/NextEvents";
-
 import Profesionals from "./Profesionals";
-import About from "../Home/About";
-import Research from "../Home/Research";
+import Brands from "../Home/Brands";
+import Testimonials from "./Testimonials";
 
 const Home = () => {
   return (
@@ -14,6 +13,8 @@ const Home = () => {
       <NextEvents />
       <Profesionals />
       <StatsBar />
+      <Brands />
+      <Testimonials />
     </>
   );
 };
