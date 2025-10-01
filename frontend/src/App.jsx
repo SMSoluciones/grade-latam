@@ -1,8 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import AppRoutes from "./routes/AppRoutes";
+import Home from "./components/Home/Home";
+import About from "./components/About/About";
 
 const App = () => {
   return (
@@ -11,13 +13,18 @@ const App = () => {
         <NavBar
           links={[
             { href: "/#areas", label: "Inicio" },
-            { href: "/professional", label: "Expertos" },
+            { href: "/about", label: "Expertos" },
             { href: "/#investigacion", label: "Eventos y Cursos" },
             { href: "/#contacto", label: "Contacto" },
           ]}
         />
         <main className="flex-grow">
-          <AppRoutes /> {/* Rutas principales */}
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/*" element={<AppRoutes />} />{" "}
+            {/* Rutas principales */}
+          </Routes>
         </main>
         <Footer /> {/* Footer siempre visible */}
       </div>

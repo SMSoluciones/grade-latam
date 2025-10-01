@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
+// Images
 import LorenzattiImg from "../../assets/Profesionals/Alberto-Lorenzatti.png";
 import PiskorzImg from "../../assets/Profesionals/Daniel-Piskorz.png";
 import LopezSantiImg from "../../assets/Profesionals/Ricardo-Lopez-Santi.png";
@@ -48,7 +49,6 @@ const professionals = [
 
 const Profesionals = () => {
   useEffect(() => {
-    // Inicializar AOS
     AOS.init({
       duration: 1000,
       once: true,
@@ -63,7 +63,6 @@ const Profesionals = () => {
       <div className="flex flex-wrap justify-center gap-8">
         {professionals.map((prof, index) => (
           <a
-            ECF1FB
             key={prof.id}
             href={`/profesionales/${prof.id}`} // Enlace dinámico basado en el ID del profesional
             className="w-[240px] h-[350px] rounded-2xl shadow-lg overflow-hidden relative bg-[#D4D6D9] hover:bg-gradient-to-t hover:from-[#ECF1FB] hover:to-[#4F8BD0] transition-colors duration-300 flex flex-col justify-end"

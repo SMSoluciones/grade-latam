@@ -1,16 +1,13 @@
 import React from "react";
+import LogoWhite from "../assets/White-Logo.svg";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-t from-[#244469] to-[#4786CF] text-white py-12 px-6 md:py-24 md:px-32 rounded-t-[30px]">
+    <footer className="bg-gradient-to-r from-[#244469] to-[#4786CF] text-white py-12 px-6 md:py-24 md:px-32 rounded-t-[30px]">
       <div className="container mx-auto flex flex-col md:flex-row md:justify-between md:items-start gap-12 text-center md:text-left">
         {/* Logo y dirección */}
         <div className="flex flex-col items-center md:items-start">
-          <img
-            src="https://firebasestorage.googleapis.com/v0/b/icsb-project.firebasestorage.app/o/assets%2FLogoFooter.svg?alt=media&token=c9887936-9a02-4379-b74f-f4f5759cced0" // Reemplaza con la ruta de tu logo
-            alt="GradeLatam Logo"
-            className="mb-4"
-          />
+          <img src={LogoWhite} alt="GradeLatam Logo" className="mb-3" />
 
           {/* Redes sociales */}
           <div className="flex justify-center md:justify-start mt-6 space-x-4">
