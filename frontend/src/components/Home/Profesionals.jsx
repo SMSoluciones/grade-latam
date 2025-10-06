@@ -3,11 +3,11 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 // Images
-import LorenzattiImg from "../../assets/Profesionals/Alberto-Lorenzatti.png";
-import PiskorzImg from "../../assets/Profesionals/Daniel-Piskorz.png";
-import LopezSantiImg from "../../assets/Profesionals/Ricardo-Lopez-Santi.png";
-import WyssImg from "../../assets/Profesionals/Fernando-Wyss.png";
-import OsirisImg from "../../assets/Profesionals/Osiris-Valdez-Tiburcio.png";
+import LorenzattiImg from "../../assets/Profesionals/DoctorsSmall/Alberto-Lorenzatti.png";
+import PiskorzImg from "../../assets/Profesionals/DoctorsSmall/Daniel-Piskorz.png";
+import LopezSantiImg from "../../assets/Profesionals/DoctorsSmall/Ricardo-Lopez-Santi.png";
+import WyssImg from "../../assets/Profesionals/DoctorsSmall/Fernando-Wyss.png";
+import OsirisImg from "../../assets/Profesionals/DoctorsSmall/Osiris-Valdez-Tiburcio.png";
 
 const professionals = [
   {
@@ -47,7 +47,7 @@ const professionals = [
   },
 ];
 
-const Profesionals = () => {
+const Profesionals = ({ onProfessionalClick }) => {
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -62,12 +62,12 @@ const Profesionals = () => {
       </h2>
       <div className="flex flex-wrap justify-center gap-8">
         {professionals.map((prof, index) => (
-          <a
+          <div
             key={prof.id}
-            href={`/profesionales/${prof.id}`} // Enlace dinámico basado en el ID del profesional
-            className="w-[240px] h-[350px] rounded-2xl shadow-lg overflow-hidden relative bg-[#D4D6D9] hover:bg-gradient-to-t hover:from-[#ECF1FB] hover:to-[#4F8BD0] transition-colors duration-300 flex flex-col justify-end"
+            onClick={() => onProfessionalClick(prof)}
+            className="cursor-pointer w-[240px] h-[350px] rounded-2xl shadow-lg overflow-hidden relative bg-[#D4D6D9] hover:bg-gradient-to-t hover:from-[#ECF1FB] hover:to-[#4F8BD0] transition-colors duration-300 flex flex-col justify-end"
             data-aos="fade-up"
-            data-aos-delay={index * 100} // Añade un retraso progresivo para cada tarjeta
+            data-aos-delay={index * 100}
           >
             <div className="relative w-full h-full flex flex-col justify-end">
               <img
@@ -91,7 +91,7 @@ const Profesionals = () => {
                 </div>
               </div>
             </div>
-          </a>
+          </div>
         ))}
       </div>
     </section>

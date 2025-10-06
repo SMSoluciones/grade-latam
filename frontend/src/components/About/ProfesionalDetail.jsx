@@ -1,0 +1,78 @@
+import React from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+// Importing DoctorsBig images
+import LorenzattiImg from "../../assets/Profesionals/DoctorsBig/Alberto-LorenzattiBG.png";
+import PiskorzImg from "../../assets/Profesionals/DoctorsBig/Daniel-PiskorzBG.png";
+import LopezSantiImg from "../../assets/Profesionals/DoctorsBig/Ricardo-Lopez-SantiBG.png";
+import WyssImg from "../../assets/Profesionals/DoctorsBig/Fernando-WyssBG.png";
+import OsirisImg from "../../assets/Profesionals/DoctorsBig/Osiris-Valdez-TiburcioBG.png";
+
+const ProfesionalDetail = ({ professional }) => {
+  React.useEffect(() => {
+    AOS.init({ duration: 700, once: false });
+    AOS.refresh();
+  }, [professional]);
+  if (!professional) return null;
+
+
+  const bigImages = {
+    "Dr. Alberto Lorenzatti": LorenzattiImg,
+    "Dr. Daniel Piskorz": PiskorzImg,
+    "Dr. Ricardo Lopez Santi": LopezSantiImg,
+    "Dr. Fernando Wyss": WyssImg,
+    "Dr. Osiris Valdez Tiburcio": OsirisImg,
+  };
+
+  return (
+    <div className="flex items-center justify-center p-8">
+      <div
+        key={professional.name}
+        className="flex flex-col md:flex-row items-stretch gap-8 bg-[#ECF1FB] rounded-lg shadow-lg max-w-[1300px] h-[600px]"
+        data-aos="fade-up"
+      >
+        <div className="flex flex-1 items-end justify-center h-full w-[600px] p-0 m-0">
+          <img
+            src={bigImages[professional.name]}
+            alt={professional.name}
+            className="w-full h-full rounded-lg object-contain"
+            style={{ objectPosition: 'bottom' }}
+          />
+        </div>
+        <div className="flex flex-col justify-center bg-gradient-to-t from-[#244469] to-[#4F8BD0] text-white p-6 rounded-lg shadow-md h-[600px] w-[500px]">
+          <div className="text-sm mb-2 bg-amber-50 text-[#11243B] font-semibold rounded-full px-3 py-1">
+            Grade Latam | Sobre nosotros
+          </div>
+          <h2 className="text-3xl font-bold mb-4">{professional.name}</h2>
+          <p className="text-md mb-6">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
+            in risus ac magna vulputate dictum. Nulla at facilisis nisi. Aenean
+            at erat at dolor sollicitudin malesuada sit amet eget turpis.
+            Suspendisse potenti. Integer feugiat sem vel purus cursus, nec
+            imperdiet leo commodo. Vivamus ut luctus leo. Maecenas a lectus eu
+            nisl varius ultrices. Duis tristique arcu id lorem vulputate, vitae
+            feugiat justo feugiat. Nam sit amet sapien non odio imperdiet
+            venenatis. Sed nec sem id urna pretium convallis at non ipsum.
+          </p>
+          <div className="flex gap-4">
+            <a
+              href="#"
+              className="text-white hover:text-gray-300 transition-colors flex items-center gap-2"
+            >
+              <i className="fab fa-instagram"></i> Instagram
+            </a>
+            <a
+              href="#"
+              className="text-white hover:text-gray-300 transition-colors flex items-center gap-2"
+            >
+              <i className="fab fa-linkedin"></i> LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ProfesionalDetail;
