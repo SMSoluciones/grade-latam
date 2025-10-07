@@ -1,4 +1,5 @@
 import React from "react";
+import ProfesionalSlider from "./ProfesionalSlider";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -18,18 +19,18 @@ const ProfesionalDetail = ({ professional }) => {
 
 
   const bigImages = {
-    "Dr. Alberto Lorenzatti": LorenzattiImg,
-    "Dr. Daniel Piskorz": PiskorzImg,
-    "Dr. Ricardo Lopez Santi": LopezSantiImg,
-    "Dr. Fernando Wyss": WyssImg,
-    "Dr. Osiris Valdez Tiburcio": OsirisImg,
+    "Alberto Lorenzatti": LorenzattiImg,
+    "Daniel Piskorz": PiskorzImg,
+    "Ricardo Lopez Santi": LopezSantiImg,
+    "Fernando Wyss": WyssImg,
+    "Osiris Valdez Tiburcio": OsirisImg,
   };
 
   return (
-    <div className="flex items-center justify-center p-8">
+    <div className="flex flex-col items-center justify-center p-8">
       <div
         key={professional.name}
-        className="flex flex-col md:flex-row items-stretch gap-8 bg-[#ECF1FB] rounded-lg shadow-lg max-w-[1300px] h-[600px]"
+        className="flex flex-col md:flex-row items-stretch gap-8 bg-[#ecf1fb] rounded-lg shadow-lg max-w-[1300px] h-[600px]"
         data-aos="fade-up"
       >
         <div className="flex flex-1 items-end justify-center h-full w-[600px] p-0 m-0">
@@ -41,19 +42,12 @@ const ProfesionalDetail = ({ professional }) => {
           />
         </div>
         <div className="flex flex-col justify-center bg-gradient-to-t from-[#244469] to-[#4F8BD0] text-white p-6 rounded-lg shadow-md h-[600px] w-[500px]">
-          <div className="text-sm mb-2 bg-amber-50 text-[#11243B] font-semibold rounded-full px-3 py-1">
+          <div className="text-sm mb-2 bg-[#ecf1fb] text-[#11243B] font-semibold rounded-full px-3 py-1 max-w-fit">
             Grade Latam | Sobre nosotros
           </div>
-          <h2 className="text-3xl font-bold mb-4">{professional.name}</h2>
+          <h2 className="text-3xl font-bold mb-4">Dr. <br />{professional.name}</h2>
           <p className="text-md mb-6">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-            in risus ac magna vulputate dictum. Nulla at facilisis nisi. Aenean
-            at erat at dolor sollicitudin malesuada sit amet eget turpis.
-            Suspendisse potenti. Integer feugiat sem vel purus cursus, nec
-            imperdiet leo commodo. Vivamus ut luctus leo. Maecenas a lectus eu
-            nisl varius ultrices. Duis tristique arcu id lorem vulputate, vitae
-            feugiat justo feugiat. Nam sit amet sapien non odio imperdiet
-            venenatis. Sed nec sem id urna pretium convallis at non ipsum.
+            {professional.description}
           </p>
           <div className="flex gap-4">
             <a
@@ -70,6 +64,10 @@ const ProfesionalDetail = ({ professional }) => {
             </a>
           </div>
         </div>
+      </div>
+      {/* Slider de fotos del profesional */}
+      <div className="w-full flex justify-center mt-8">
+        <ProfesionalSlider professional={professional} />
       </div>
     </div>
   );

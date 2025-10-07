@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -12,48 +13,59 @@ import OsirisImg from "../../assets/Profesionals/DoctorsSmall/Osiris-Valdez-Tibu
 const professionals = [
   {
     id: 1,
-    name: "Dr. Alberto Lorenzatti",
+    name: "Alberto Lorenzatti",
+    description:"1lorem ipsum dolor sit amet, consectetur adipiscing elit",
     specialty: "Cardiología",
     country: "Argentina",
     image: LorenzattiImg,
+
   },
   {
     id: 2,
-    name: "Dr. Daniel Piskorz",
+    name: "Daniel Piskorz",
+    description:"2lorem ipsum dolor sit amet, consectetur adipiscing elit",
     specialty: "Cardiología",
     country: "Argentina",
     image: PiskorzImg,
   },
   {
     id: 3,
-    name: "Dr. Ricardo Lopez Santi",
+    name: "Ricardo Lopez Santi",
+    description:"3lorem ipsum dolor sit amet, consectetur adipiscing elit",
     specialty: "Cardiología",
     country: "Argentina",
     image: LopezSantiImg,
   },
   {
     id: 4,
-    name: "Dr. Fernando Wyss",
+    name: "Fernando Wyss",
+    description:"4lorem ipsum dolor sit amet, consectetur adipiscing elit",
     specialty: "Cardiología",
     country: "Argentina",
     image: WyssImg,
   },
   {
     id: 5,
-    name: "Dr. Osiris Valdez Tiburcio",
+    name: "Osiris Valdez Tiburcio",
+    description:"5lorem ipsum dolor sit amet, consectetur adipiscing elit",
     specialty: "Cardiología",
     country: "Rep. Dominicana",
     image: OsirisImg,
   },
 ];
 
-const Profesionals = ({ onProfessionalClick }) => {
+const Profesionals = () => {
+  const navigate = useNavigate();
   useEffect(() => {
     AOS.init({
       duration: 1000,
       once: true,
     });
   }, []);
+
+  const handleClick = (prof) => {
+    navigate("/about", { state: { professional: prof } });
+  };
 
   return (
     <section className="w-full py-19">
@@ -64,7 +76,7 @@ const Profesionals = ({ onProfessionalClick }) => {
         {professionals.map((prof, index) => (
           <div
             key={prof.id}
-            onClick={() => onProfessionalClick(prof)}
+            onClick={() => handleClick(prof)}
             className="cursor-pointer w-[240px] h-[350px] rounded-2xl shadow-lg overflow-hidden relative bg-[#D4D6D9] hover:bg-gradient-to-t hover:from-[#ECF1FB] hover:to-[#4F8BD0] transition-colors duration-300 flex flex-col justify-end"
             data-aos="fade-up"
             data-aos-delay={index * 100}
@@ -82,7 +94,7 @@ const Profesionals = ({ onProfessionalClick }) => {
               <div className="absolute bottom-0 left-0 w-full px-5 pb-5 text-white z-10">
                 <div className="relative mb-1 flex items-center justify-start">
                   <span className="font-bold text-lg drop-shadow-lg relative z-10">
-                    {prof.name}
+                    Dr. {prof.name}
                   </span>
                   <span className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-7 w-full rounded-lg blur-md bg-[#23395d]/60 z-0"></span>
                 </div>
