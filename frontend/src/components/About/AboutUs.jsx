@@ -48,24 +48,24 @@ import VideoProm from '../../assets/VIDEOPROM.png'; // Usa la imagen que corresp
         <h2 className="text-4xl font-bold text-center text-[#23395d] mb-12" data-aos="fade-right">Qué hacemos</h2>
   <div className="flex flex-col md:flex-row justify-center items-stretch gap-8 mb-8">
           {/* Consultoría */}
-            <div className="bg-[#39669B] text-white rounded-2xl p-8 flex-1 flex flex-col items-center min-w-[280px] max-w-[400px] min-h-[320px] h-full transition-transform duration-500 ease-in-out hover:scale-105 " data-aos="fade-up" data-aos-delay="100">
-              <img src={ConsultSVG} alt="Consultoría" className="w-16 h-16 mb-4" />
+          <div className="bg-[#39669B] text-white rounded-2xl p-8 flex-1 flex flex-col items-center min-w-[280px] max-w-[400px] min-h-[320px] h-full" data-aos="fade-up" data-aos-delay="100">
+            <img src={ConsultSVG} alt="Consultoría" className="w-16 h-16 mb-4" />
             <h3 className="text-2xl font-bold mb-2">Consultoría</h3>
             <p className="text-center text-base">
               En el campo de la innovación biotecnológica surge el gran desafío de su implementación acortando las brechas entre las guías de práctica clínica y la asistencia médica.
             </p>
           </div>
           {/* Educación */}
-            <div className="bg-[#39669B] text-white rounded-2xl p-8 flex-1 flex flex-col items-center min-w-[280px] max-w-[400px] min-h-[320px] h-full transition-transform duration-500 ease-in-out hover:scale-105 " data-aos="fade-up" data-aos-delay="200">
-              <img src={EducationSVG} alt="Educación" className="w-16 h-16 mb-4" />
+          <div className="bg-[#39669B] text-white rounded-2xl p-8 flex-1 flex flex-col items-center min-w-[280px] max-w-[400px] min-h-[320px] h-full" data-aos="fade-up" data-aos-delay="200">
+            <img src={EducationSVG} alt="Educación" className="w-16 h-16 mb-4" />
             <h3 className="text-2xl font-bold mb-2">Educación</h3>
             <p className="text-center text-base">
               Llevamos a cabo eventos basados en formatos dinámicos que puedan abordar con profundidad las diversas temáticas de los avances diagnósticos y terapéuticos.
             </p>
           </div>
           {/* Difusión */}
-            <div className="bg-[#39669B] text-white rounded-2xl p-8 flex-1 flex flex-col items-center min-w-[280px] max-w-[400px] min-h-[320px] h-full transition-transform duration-500 ease-in-out hover:scale-105 " data-aos="fade-up" data-aos-delay="300">
-              <img src={PostSVG} alt="Difusión" className="w-16 h-16 mb-4" />
+          <div className="bg-[#39669B] text-white rounded-2xl p-8 flex-1 flex flex-col items-center min-w-[280px] max-w-[400px] min-h-[320px] h-full" data-aos="fade-up" data-aos-delay="300">
+            <img src={PostSVG} alt="Difusión" className="w-16 h-16 mb-4" />
             <h3 className="text-2xl font-bold mb-2">Difusión</h3>
             <p className="text-center text-base">
               Compartimos material científico para la comunidad médica y el público en general, de manera rigurosa, accesible y adaptada a sus necesidades.

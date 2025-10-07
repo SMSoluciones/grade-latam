@@ -5,7 +5,7 @@ import "aos/dist/aos.css";
 
 const API_URL = "http://localhost:3001/api/events";
 
-const NextEvents = () => {
+const NextEvents = ({ hideAllEventsButton = false }) => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -76,14 +76,17 @@ const NextEvents = () => {
           </div>
         ))}
       </div>
-      <div className="flex justify-center mt-10" data-aos="fade-up">
-        <a
-          href="/eventos"
-          className="bg-[#4669a5] text-white font-bold py-3 px-8 rounded-full text-lg shadow hover:bg-[#23395d] transition"
-        >
-          Todos los eventos
-        </a>
-      </div>
+        {/* Botón de todos los eventos condicional */}
+        {!hideAllEventsButton && (
+          <div className="flex justify-center mt-10" data-aos="fade-up">
+            <a
+              href="/eventos"
+              className="bg-[#4669a5] text-white font-bold py-3 px-8 rounded-full text-lg shadow hover:bg-[#23395d] transition"
+            >
+              Todos los eventos
+            </a>
+          </div>
+        )}
     </section>
   );
 };
