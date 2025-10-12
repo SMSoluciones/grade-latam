@@ -54,9 +54,12 @@ const NavBar = ({ links = [] }) => {
     >
       <div className="mx-20">
         <div
-          className={`flex justify-between items-center rounded-full px-6 py-4 transition-all duration-300 ${
-            isScrolled ? "bg-primary-light shadow-lg" : "bg-primary-light"
-          }`}
+          className="flex justify-between items-center rounded-full px-6 py-4 transition-all duration-300 shadow-lg backdrop-blur-md"
+          style={{
+            background: "rgba(210, 222, 245, 0.18)",
+            backdropFilter: "blur(32px)",
+            WebkitBackdropFilter: "blur(32px)"
+          }}
         >
           {/* Logo */}
           <Link to="/" className="text-xl font-bold">

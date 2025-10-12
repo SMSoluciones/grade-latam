@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import StatsBar from "../Home/StatsBar";
-
+import AnimatedBlurBackground from "../../utils/AnimatedBlurBackground";
 import NextEvents from "./NextEvents";
 import EvengLog from "../../assets/EventLog.png";
 import EventGrid from "./EventGrid";
@@ -16,13 +16,7 @@ const Events = () => {
   return (
     <div className="relative w-full min-h-screen overflow-hidden">
       {/* Fondo Blur Animado igual al Header */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-2/5 left-0 w-72 h-72 bg-primary rounded-full filter blur-3xl opacity-50 animate-random-move"></div>
-        <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-primary rounded-full filter blur-3xl opacity-30 animate-random-move"></div>
-        <div className="absolute top-1/10 left-1/4 w-20 h-20 bg-primary rounded-full filter blur-3xl opacity-30 animate-random-move"></div>
-        <div className="absolute -top-1/4 left-1/4 w-96 h-96 bg-primary rounded-full filter blur-3xl opacity-30 animate-random-move"></div>
-        <div className="absolute bottom-1/2 right-1/9 w-80 h-80 bg-primary rounded-full filter blur-3xl opacity-30 animate-random-move"></div>
-      </div>
+      <AnimatedBlurBackground />
 
 
       {/* Sección superior con texto, imagen y botón */}

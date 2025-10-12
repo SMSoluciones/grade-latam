@@ -18,7 +18,9 @@ const professionals = [
     specialty: "Cardiología",
     country: "Argentina",
     image: LorenzattiImg,
-
+    instagram: "https://instagram.com/albertolorenzatti",
+    linkedin: "https://linkedin.com/in/albertolorenzatti",
+    youtube: "https://youtube.com/@albertolorenzatti"
   },
   {
     id: 2,
@@ -27,6 +29,8 @@ const professionals = [
     specialty: "Cardiología",
     country: "Argentina",
     image: PiskorzImg,
+    instagram: "https://instagram.com/danielpiskorz",
+    linkedin: "https://linkedin.com/in/danielpiskorz"
   },
   {
     id: 3,
@@ -35,6 +39,7 @@ const professionals = [
     specialty: "Cardiología",
     country: "Argentina",
     image: LopezSantiImg,
+    linkedin: "https://linkedin.com/in/ricardolopezsanti"
   },
   {
     id: 4,
@@ -43,6 +48,7 @@ const professionals = [
     specialty: "Cardiología",
     country: "Argentina",
     image: WyssImg,
+    instagram: "https://instagram.com/fernandowyss"
   },
   {
     id: 5,
@@ -51,6 +57,7 @@ const professionals = [
     specialty: "Cardiología",
     country: "Rep. Dominicana",
     image: OsirisImg,
+    youtube: "https://youtube.com/@osirisvaldeztiburcio"
   },
 ];
 

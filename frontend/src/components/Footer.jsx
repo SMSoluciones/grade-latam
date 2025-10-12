@@ -1,5 +1,7 @@
 import React from "react";
 import LogoWhite from "../assets/White-Logo.svg";
+import { Link } from "react-router-dom";
+import Youtube from "../assets/Youtube.svg";
 
 const Footer = () => {
   return (
@@ -11,24 +13,10 @@ const Footer = () => {
 
           {/* Redes sociales */}
           <div className="flex justify-center md:justify-start mt-6 space-x-4">
-            <a href="#" aria-label="LinkedIn">
+            <a href="#" aria-label="Youtube">
               <img
-                src="https://firebasestorage.googleapis.com/v0/b/icsb-project.firebasestorage.app/o/assets%2FLinkedin.svg?alt=media&token=66a7b1ad-264c-48bf-8748-2d1833701422" // Reemplaza con la ruta del ícono
-                alt="LinkedIn"
-                className="w-6 h-6"
-              />
-            </a>
-            <a href="#" aria-label="WhatsApp">
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/icsb-project.firebasestorage.app/o/assets%2FWhatsapp.svg?alt=media&token=0ab910f9-aba5-4ad9-9859-9ee9ab7caf7e" // Reemplaza con la ruta del ícono
-                alt="WhatsApp"
-                className="w-6 h-6"
-              />
-            </a>
-            <a href="#" aria-label="Instagram">
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/icsb-project.firebasestorage.app/o/assets%2FInstagram.svg?alt=media&token=c95bdc90-9844-4596-a89c-4c9da28ef0be" // Reemplaza con la ruta del ícono
-                alt="Instagram"
+                src={Youtube}
+                alt="Youtube"
                 className="w-6 h-6"
               />
             </a>
@@ -39,22 +27,21 @@ const Footer = () => {
         <div className="flex flex-col items-center md:items-start">
           <h3 className="font-bold mb-2 text-xl">Información</h3>
           <ul className="space-y-1">
-            <li>Expertos</li>
-            <li>Eventos y Cursos</li>
-            <li>Investigación</li>
+            <Link to="/about"><li>Expertos</li></Link>
+            <Link to="/events"><li>Eventos y Cursos</li></Link>
           </ul>
         </div>
 
         {/* Turnos */}
         <div className="flex flex-col items-center md:items-start">
           <h3 className="font-bold mb-2 text-xl">Plataforma</h3>
-          <p>Ingreso</p>
+          <Link to="https://www.gradelatam.com.ar/login"><p>Ingreso</p></Link>
         </div>
 
         {/* Contacto */}
         <div className="flex flex-col items-center md:items-start">
           <h3 className="font-bold mb-2 text-xl">Contacto</h3>
-          <p>Formulario de contacto.</p>
+          <Link to="/contact"><p>Formulario de contacto.</p></Link>
         </div>
       </div>
 

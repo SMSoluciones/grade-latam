@@ -1,4 +1,7 @@
-import React from "react";
+import {useEffect} from "react";
+import InstagramIcon from "../../assets/Instagram.svg";
+import LinkedinIcon from "../../assets/Linkedin.svg";
+import YoutubeIcon from "../../assets/Youtube.svg";
 import ProfesionalSlider from "./ProfesionalSlider";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -11,7 +14,7 @@ import WyssImg from "../../assets/Profesionals/DoctorsBig/Fernando-WyssBG.png";
 import OsirisImg from "../../assets/Profesionals/DoctorsBig/Osiris-Valdez-TiburcioBG.png";
 
 const ProfesionalDetail = ({ professional }) => {
-  React.useEffect(() => {
+  useEffect(() => {
     AOS.init({ duration: 700, once: false });
     AOS.refresh();
   }, [professional]);
@@ -49,19 +52,37 @@ const ProfesionalDetail = ({ professional }) => {
           <p className="text-md mb-6">
             {professional.description}
           </p>
-          <div className="flex gap-4">
-            <a
-              href="#"
-              className="text-white hover:text-gray-300 transition-colors flex items-center gap-2"
-            >
-              <i className="fab fa-instagram"></i> Instagram
-            </a>
-            <a
-              href="#"
-              className="text-white hover:text-gray-300 transition-colors flex items-center gap-2"
-            >
-              <i className="fab fa-linkedin"></i> LinkedIn
-            </a>
+          <div className="flex gap-4 mt-6">
+            {professional.instagram && (
+              <a
+                href={professional.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-lg p-2  hover:scale-110 transition"
+              >
+                <img src={InstagramIcon} alt="Instagram" className="w-10 h-10" />
+              </a>
+            )}
+            {professional.linkedin && (
+              <a
+                href={professional.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-lg p-2 hover:scale-110 transition"
+              >
+                <img src={LinkedinIcon} alt="LinkedIn" className="w-10 h-10" />
+              </a>
+            )}
+            {professional.youtube && (
+              <a
+                href={professional.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-lg p-2  hover:scale-110 transition"
+              >
+                <img src={YoutubeIcon} alt="YouTube" className="w-10 h-10" />
+              </a>
+            )}
           </div>
         </div>
       </div>
