@@ -33,23 +33,25 @@ const ProfesionalDetail = ({ professional }) => {
     <div className="flex flex-col items-center justify-center p-8">
       <div
         key={professional.name}
-        className="flex flex-col md:flex-row items-stretch gap-8 bg-[#ecf1fb] rounded-lg shadow-lg max-w-[1300px] h-[600px]"
+        className="flex flex-col md:flex-row items-stretch gap-8 bg-[#ecf1fb] rounded-lg shadow-lg max-w-[1300px] w-full overflow-hidden"
         data-aos="fade-up"
       >
-        <div className="flex flex-1 items-end justify-center h-full w-[600px] p-0 m-0">
-          <img
-            src={bigImages[professional.name]}
-            alt={professional.name}
-            className="w-full h-full rounded-lg object-contain"
-            style={{ objectPosition: 'bottom' }}
-          />
+        <div className="flex-1 w-full md:w-[60%] flex items-center justify-center p-0 m-0">
+          <div className="w-full h-56 sm:h-72 md:h-full">
+            <img
+              src={bigImages[professional.name]}
+              alt={professional.name}
+              className="w-full h-full rounded-t-lg md:rounded-l-lg md:rounded-tr-none object-cover"
+              style={{ objectPosition: 'center bottom' }}
+            />
+          </div>
         </div>
-        <div className="flex flex-col justify-center bg-gradient-to-t from-[#244469] to-[#4F8BD0] text-white p-6 rounded-lg shadow-md h-[600px] w-[500px]">
+        <div className="flex flex-col justify-center bg-gradient-to-t from-[#244469] to-[#4F8BD0] text-white p-6 rounded-b-lg md:rounded-r-lg md:rounded-bl-none w-full md:w-[40%]">
           <div className="text-sm mb-2 bg-[#ecf1fb] text-[#11243B] font-semibold rounded-full px-3 py-1 max-w-fit">
             Grade Latam | Sobre nosotros
           </div>
           <h2 className="text-3xl font-bold mb-4">Dr. <br />{professional.name}</h2>
-          <p className="text-md mb-6">
+          <p className="text-md mb-6 max-h-[40vh] overflow-auto">
             {professional.description}
           </p>
           <div className="flex gap-4 mt-6">

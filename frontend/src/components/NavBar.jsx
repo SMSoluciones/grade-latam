@@ -48,13 +48,13 @@ const NavBar = ({ links = [] }) => {
 
   return (
     <nav
-      className={`fixed top-10 left-0 z-50 px-0 py-4 w-full transition-all duration-300 ${
+      className={`fixed top-4 md:top-10 left-0 z-50 w-full transition-all duration-300 ${
         isScrolled ? "bg-transparent" : "bg-transparent"
       }`}
     >
-      <div className="mx-20">
+      <div className="mx-4 md:mx-20">
         <div
-          className="flex justify-between items-center rounded-full px-6 py-4 transition-all duration-300 shadow-lg backdrop-blur-md"
+          className="flex justify-between items-center rounded-full px-4 md:px-6 py-3 md:py-4 transition-all duration-300 shadow-lg backdrop-blur-md"
           style={{
             background: "rgba(210, 222, 245, 0.18)",
             backdropFilter: "blur(32px)",

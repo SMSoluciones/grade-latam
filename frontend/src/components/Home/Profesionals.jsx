@@ -13,8 +13,8 @@ import OsirisImg from "../../assets/Profesionals/DoctorsSmall/Osiris-Valdez-Tibu
 const professionals = [
   {
     id: 1,
-    name: "Alberto Lorenzatti",
-    description:"1lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    name: "Alberto Lorenzatti", 
+    description:"Soy Co-Director en el Instituto Médico DAMIC/Fundación Rusculleda de Investigación en Medicina y fui Jefe de Cardiología en el Hospital de Córdoba, Argentina.Es Médico Cardiólogo y Experto Certificado en Lípidos. He desempeñado el cargo de  Presidente de la International Society of Cardiovascular Pharmacotherapy, de la Federación Argentina de Cardiología y de la Sociedad Argentina de Lípidos. Co-Editor European Heart Journal (EHJ) y del European Cardiology Reviews (ECR) Tengo vasto desarrollo en investigación clínica y he actuado como miembro del comité directivo en estudios pivotales como Jupiter, Cantos, Fourier, Prominent, BetOnMace, SOUL, CLEAR, Vesalius CV y Ocean(a). Más de 700 abstracts, publicaciones y presentaciones a nivel nacional e internacional.",
     specialty: "Cardiología",
     country: "Argentina",
     image: LorenzattiImg,
@@ -25,7 +25,7 @@ const professionals = [
   {
     id: 2,
     name: "Daniel Piskorz",
-    description:"2lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    description:"Obtuve mi título de médico en Universidad Nacional de Rosario, Argentina, en 1982 y me especialicé en cardiología en el Hospital de Emergencias Dr. Clemente Álvarez de Rosario, titulándome como cardiólogo en la 2.ª Circunscripción de Santa Fe en 1988 y como especialista en ecocardiografía de tercer nivel en 1991. El 11 de octubre de 2013, la Sociedad Latinoamericana de Hipertensión me otorgó el título de Especialista en Hipertensión. He publicado aproximadamente 300 artículos originales y revisiones como autor principal en revistas indexadas nacionales e internacionales con revisión por pares, así como siete libros.",
     specialty: "Cardiología",
     country: "Argentina",
     image: PiskorzImg,
@@ -35,7 +35,7 @@ const professionals = [
   {
     id: 3,
     name: "Ricardo Lopez Santi",
-    description:"3lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    description:"Soy médico egresado de la Universidad Nacional de La Plata, Argentina, especialista consultor en Cardiología y especialista en Sistemas de salud y seguridad social. He desarrollado una intensa actividad en instituciones científicas habiendo sido presidente de la Federación Argentina de Cardiología y actualmente desarrollando el cargo de presidente electo de la Sociedad Interamericana de Cardiología. Co autor del libro de “Cardiometabolismo de la fisiopatología a la terapéutica” en sus cinco ediciones y de mas de 50 trabajos publicados en revistas indexadas. En el año 2019 recibí de la World Hypertension League una distinción con el Recognition of Excellence Award in Hypertension and Implementation.",
     specialty: "Cardiología",
     country: "Argentina",
     image: LopezSantiImg,
@@ -44,7 +44,7 @@ const professionals = [
   {
     id: 4,
     name: "Fernando Wyss",
-    description:"4lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    description:"Soy Medico egresado de la Universidad de San Carlos de Guatemala (USAC), con postgrado de Medicina Interna y Master en Cardiología por la Universidad Miguel Hernández de Elche en Alicante, España. He sido presidente de la Sociedad Centroamericana y del Caribe de Hipertensión Arterial y de la Sociedad Interamericana de Cardiología Al momento con mas de 80 publicaciones científicas y editor del Libro Azul de Cardiologia de la SIAC y del tratado de Hipertension de la SCCH En el año 2025 fui galardonado por el Colegio Americano de Cardiologia (ACC) con el International Service Award por mis contribuciones en la Cardiologi Latinoamericana. ",
     specialty: "Cardiología",
     country: "Argentina",
     image: WyssImg,
@@ -53,7 +53,7 @@ const professionals = [
   {
     id: 5,
     name: "Osiris Valdez Tiburcio",
-    description:"5lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    description:"Soy médico egresado de la UASD, República Dominicana, especialista en Cardiología y Ecocardiografía formado en el Instituto Dominicano de Cardiología y en el Instituto Nacional de Cardiología Ignacio Chávez, México. He sido presidente la Sociedad Centroamericana y del Caribe de Hipertensión y de la Fundación Dominicana de Cardiología. Soy director del Consejo de Prevención de la Sociedad Interamericana de Cardiología y profesor del Curso de Hipertensión de la Universidad de San Carlos de Guatemala. Participo como coautor de la Guía Latinoamericana de Hipertensión 2024 y editor del Tratado de Hipertensión Arterial (2024).",
     specialty: "Cardiología",
     country: "Rep. Dominicana",
     image: OsirisImg,
