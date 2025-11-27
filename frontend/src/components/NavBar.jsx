@@ -67,7 +67,7 @@ const NavBar = ({ links = [] }) => {
           </Link>
 
           {/* Menú completo (visible en pantallas grandes) */}
-          <div className="hidden md:flex md:items-center md:space-x-8">
+          <div className="hidden lg:flex lg:items-center lg:space-x-8">
             <ul className="flex space-x-24">
               {links.map((link, index) => (
                 <li key={index}>
@@ -89,8 +89,8 @@ const NavBar = ({ links = [] }) => {
             </Link>
           </div>
 
-          {/* Hamburger Icon (visible en pantallas pequeñas) */}
-          <div className="md:hidden">
+          {/* Hamburger Icon (visible en pantallas pequeñas e iPad) */}
+          <div className="lg:hidden">
             <button
               onClick={toggleMenu}
               className="text-gray-600 focus:outline-none z-50 relative"
@@ -117,7 +117,7 @@ const NavBar = ({ links = [] }) => {
             </button>
           </div>
 
-          {/* Menú desplegable (visible en pantallas pequeñas) */}
+          {/* Menú desplegable (visible en pantallas pequeñas e iPad) */}
           <HamburgerMenu
             links={links}
             isMenuOpen={isMenuOpen}

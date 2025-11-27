@@ -10,17 +10,6 @@ const Footer = () => {
         {/* Logo y dirección */}
         <div className="flex flex-col items-center md:items-start">
           <img src={LogoWhite} alt="GradeLatam Logo" className="mb-3" />
-
-          {/* Redes sociales */}
-          <div className="flex justify-center md:justify-start mt-6 space-x-4">
-            <a href="#" aria-label="Youtube">
-              <img
-                src={Youtube}
-                alt="Youtube"
-                className="w-6 h-6"
-              />
-            </a>
-          </div>
         </div>
 
         {/* Información */}

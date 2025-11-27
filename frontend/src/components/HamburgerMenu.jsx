@@ -8,7 +8,7 @@ const HamburgerMenu = ({ links, isMenuOpen, toggleMenu }) => {
         isMenuOpen
           ? "opacity-100 translate-y-0"
           : "opacity-0 -translate-y-full pointer-events-none"
-      } md:hidden`}
+      } lg:hidden`}
       style={{ minHeight: '100vh' }}
     >
       <div className="flex flex-col items-center justify-center w-full h-full">

@@ -37,12 +37,12 @@ const ProfesionalDetail = ({ professional }) => {
         data-aos="fade-up"
       >
         <div className="flex-1 w-full md:w-[60%] flex items-center justify-center p-0 m-0">
-          <div className="w-full h-56 sm:h-72 md:h-full">
+          <div className="w-full h-80 sm:h-96 md:h-[40rem] overflow-hidden">
             <img
               src={bigImages[professional.name]}
               alt={professional.name}
               className="w-full h-full rounded-t-lg md:rounded-l-lg md:rounded-tr-none object-cover"
-              style={{ objectPosition: 'center bottom' }}
+              style={{ objectPosition: 'center top' }}
             />
           </div>
         </div>
