@@ -10,9 +10,9 @@ const Home = () => {
   return (
     <>
       <Header />
+      <StatsBar />
       <NextEvents />
       <Profesionals />
-      <StatsBar />
       <Brands />
       <Testimonials />
     </>
