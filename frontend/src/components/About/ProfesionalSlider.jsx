@@ -14,13 +14,17 @@ import WyssImg1 from "../../assets/Profesionals/DoctorsSmall/Fernando-Wyss.png";
 import WyssImg2 from "../../assets/Profesionals/DoctorsBig/Fernando-WyssBG.png";
 import OsirisImg1 from "../../assets/Profesionals/DoctorsSmall/Osiris-Valdez-Tiburcio.png";
 import OsirisImg2 from "../../assets/Profesionals/DoctorsBig/Osiris-Valdez-TiburcioBG.png";
+import All1 from "../../assets/Prof-Img/All1.jpg";
+import All2 from "../../assets/Prof-Img/All2.jpg";
+import All3 from "../../assets/Prof-Img/All3.jpg";
+import All5 from "../../assets/Prof-Img/All5.jpg";
 
 const professionalImages = {
-  "Alberto Lorenzatti": [LorenzattiImg1, LorenzattiImg2],
-  "Daniel Piskorz": [PiskorzImg1, PiskorzImg2],
-  "Ricardo Lopez Santi": [LopezSantiImg1, LopezSantiImg2],
-  "Fernando Wyss": [WyssImg1, WyssImg2],
-  "Osiris Valdez Tiburcio": [OsirisImg1, OsirisImg2],
+  "Alberto Lorenzatti": [All1, All2, All3, All5, LorenzattiImg1, LorenzattiImg2],
+  "Daniel Piskorz": [All1, All2, All3, All5, PiskorzImg1, PiskorzImg2],
+  "Ricardo Lopez Santi": [All1, All2, All3, All5, LopezSantiImg1, LopezSantiImg2],
+  "Fernando Wyss": [All1, All2, All3, All5, WyssImg1, WyssImg2],
+  "Osiris Valdez Tiburcio": [All1, All2, All3, All5, OsirisImg1, OsirisImg2],
 };
 
 const ProfesionalSlider = ({ professional }) => {

@@ -9,12 +9,12 @@ const Brands = () => {
   const brands = [
     {
       id: 1,
-      name: "Nike",
+      name: "Bago",
       logo: LogoBago,
     },
     {
       id: 2,
-      name: "Adidas",
+      name: "Siegfried",
       logo: LogoSiegfried,
     },
   ];
