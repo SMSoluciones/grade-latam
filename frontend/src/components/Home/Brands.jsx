@@ -2,18 +2,20 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import LogoBago from "../../assets/Logo-Bago.png";
+import LogoSiegfried from "../../assets/Logo-Siegfried.png";
 
 const Brands = () => {
   const brands = [
     {
       id: 1,
       name: "Nike",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg",
+      logo: LogoBago,
     },
     {
       id: 2,
       name: "Adidas",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg",
+      logo: LogoSiegfried,
     },
   ];
 
