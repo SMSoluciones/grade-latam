@@ -61,7 +61,7 @@ const professionals = [
   },
 ];
 
-const Profesionals = () => {
+const Profesionals = ({ onProfessionalClick }) => {
   const navigate = useNavigate();
   useEffect(() => {
     AOS.init({
@@ -71,7 +71,11 @@ const Profesionals = () => {
   }, []);
 
   const handleClick = (prof) => {
-    navigate("/about", { state: { professional: prof } });
+    if (onProfessionalClick) {
+      onProfessionalClick(prof);
+    } else {
+      navigate("/about", { state: { professional: prof } });
+    }
   };
 
   return (

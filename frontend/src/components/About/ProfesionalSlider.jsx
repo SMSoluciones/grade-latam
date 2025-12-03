@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -18,6 +18,8 @@ import All1 from "../../assets/Prof-Img/All1.jpg";
 import All2 from "../../assets/Prof-Img/All2.jpg";
 import All3 from "../../assets/Prof-Img/All3.jpg";
 import All5 from "../../assets/Prof-Img/All5.jpg";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const professionalImages = {
   "Alberto Lorenzatti": [All1, All2, All3, All5, LorenzattiImg1, LorenzattiImg2],
@@ -28,6 +30,44 @@ const professionalImages = {
 };
 
 const ProfesionalSlider = ({ professional }) => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedImg, setSelectedImg] = useState(null);
+
+  const openModal = (img) => {
+    setSelectedImg(img);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setSelectedImg(null);
+  };
+
+  useEffect(() => {
+    const handleKey = (e) => {
+      if (e.key === "Escape") closeModal();
+    };
+
+    if (modalOpen) {
+      document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", handleKey);
+      // refrescar AOS para que la animación del modal se dispare
+      AOS.refresh();
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKey);
+    };
+  }, [modalOpen]);
+
+  // Inicializar AOS al montar el componente
+  useEffect(() => {
+    AOS.init({ duration: 500, once: true });
+  }, []);
+
   if (!professional || !professionalImages[professional.name]) return null;
 
   const images = professionalImages[professional.name];
@@ -46,10 +86,40 @@ const ProfesionalSlider = ({ professional }) => {
       <Slider {...settings}>
         {images.map((img, idx) => (
           <div key={idx} className="flex justify-center items-center">
-            <img src={img} alt={professional.name + " " + idx} className="rounded-xl w-full h-64 object-contain" />
+            <img
+              src={img}
+              alt={professional.name + " " + idx}
+              className="rounded-xl w-full h-80 md:h-96 object-cover cursor-pointer"
+              onClick={() => openModal(img)}
+            />
           </div>
         ))}
       </Slider>
+
+      {modalOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70"
+          role="dialog"
+          aria-modal="true"
+          onClick={closeModal}
+        >
+          <div
+            className="relative p-4 max-w-4xl w-full"
+            onClick={(e) => e.stopPropagation()}
+            data-aos="zoom-in"
+            data-aos-duration="500"
+          >
+            <button
+              onClick={closeModal}
+              aria-label="Cerrar"
+              className="absolute top-2 right-2 text-white text-3xl leading-none"
+            >
+              ×
+            </button>
+            <img src={selectedImg} alt={professional.name} className="w-full h-auto object-contain rounded-lg" />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
