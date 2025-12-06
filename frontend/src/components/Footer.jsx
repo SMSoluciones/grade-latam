@@ -9,7 +9,11 @@ const Footer = () => {
       <div className="container mx-auto flex flex-col md:flex-row md:justify-between md:items-start gap-12 text-center md:text-left">
         {/* Logo y dirección */}
         <div className="flex flex-col items-center md:items-start">
-          <img src={LogoWhite} alt="GradeLatam Logo" className="mb-3" />
+          <img
+            src={LogoWhite}
+            alt="GradeLatam Logo"
+            className="mb-3 w-28 md:w-40 lg:w-48 object-contain"
+          />
         </div>
 
         {/* Información */}
