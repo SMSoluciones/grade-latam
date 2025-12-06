@@ -88,7 +88,7 @@ const Profesionals = ({ onProfessionalClick }) => {
           <div
             key={prof.id}
             onClick={() => handleClick(prof)}
-            className="cursor-pointer w-[240px] h-[350px] rounded-2xl shadow-lg overflow-hidden relative bg-[#D4D6D9] hover:bg-gradient-to-t hover:from-[#ECF1FB] hover:to-[#4F8BD0] transition-colors duration-300 flex flex-col justify-end"
+            className="cursor-pointer w-60 h-[350px] rounded-2xl shadow-lg overflow-hidden relative bg-[#D4D6D9] hover:bg-linear-to-t hover:from-[#ECF1FB] hover:to-[#4F8BD0] transition-colors duration-300 flex flex-col justify-end"
             data-aos="fade-up"
             data-aos-delay={index * 100}
           >
@@ -100,7 +100,7 @@ const Profesionals = ({ onProfessionalClick }) => {
                 style={{ borderRadius: "18px" }}
               />
               {/* Overlay degradado en la parte inferior */}
-              <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-[#23395d]/90 via-[#23395d]/60 to-transparent rounded-b-2xl"></div>
+              <div className="absolute bottom-0 left-0 w-full h-1/3 bg-linear-to-t from-[#23395d]/90 via-[#23395d]/60 to-transparent rounded-b-2xl"></div>
               {/* Texto sobre la imagen */}
               <div className="absolute bottom-0 left-0 w-full px-5 pb-5 text-white z-10">
                 <div className="relative mb-1 flex items-center justify-start">
