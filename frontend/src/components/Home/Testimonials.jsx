@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState, useEffect } from "react";
 import AnimatedBlurBackground from "../../utils/AnimatedBlurBackground";
 
 const testimonialsData = [
@@ -84,6 +84,53 @@ const TestimonialCard = ({ item }) => {
 };
 
 const Testimonials = () => {
+  const scrollRef = useRef(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const itemCount = testimonialsData.length;
+
+  const scrollToIndex = (index) => {
+    const container = scrollRef.current;
+    if (!container) return;
+    const child = container.children[index];
+    if (child) {
+      // offsetLeft relative to the scroll container
+      const left = child.offsetLeft - container.offsetLeft;
+      container.scrollTo({ left, behavior: "smooth" });
+    }
+  };
+
+  const prev = () => scrollToIndex(Math.max(0, currentIndex - 1));
+  const next = () => scrollToIndex(Math.min(itemCount - 1, currentIndex + 1));
+
+  const onScroll = () => {
+    const container = scrollRef.current;
+    if (!container) return;
+    const children = Array.from(container.children);
+    const center = container.scrollLeft + container.clientWidth / 2;
+    let nearestIndex = 0;
+    let nearestDist = Infinity;
+    children.forEach((child, idx) => {
+      const childCenter = child.offsetLeft + child.clientWidth / 2;
+      const dist = Math.abs(childCenter - center);
+      if (dist < nearestDist) {
+        nearestDist = dist;
+        nearestIndex = idx;
+      }
+    });
+    setCurrentIndex(nearestIndex);
+  };
+
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+    // inicializa el índice
+    onScroll();
+    const handleResize = () => scrollToIndex(currentIndex);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <section className="w-full py-16">
       <h2
@@ -94,14 +141,61 @@ const Testimonials = () => {
       </h2>
 
       <div className="max-w-7xl mx-auto px-6">
-        <div className="relative">
-          <AnimatedBlurBackground />
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 relative z-10">
-            {testimonialsData.map((t) => (
-              <TestimonialCard key={t.id} item={t} />
-            ))}
+          <div className="relative">
+            <AnimatedBlurBackground />
+            <div className="relative z-10">
+              {/* Mobile: slider 1 a 1 usando scroll-snap. Visible en <sm */}
+              <div className="sm:hidden relative">
+                <div
+                  ref={scrollRef}
+                  onScroll={onScroll}
+                  className="flex gap-4 px-4 pb-4 overflow-x-auto snap-x snap-mandatory touch-pan-x scroll-smooth"
+                >
+                  {testimonialsData.map((t) => (
+                    <div key={t.id} className="flex-shrink-0 w-full snap-center">
+                      <TestimonialCard item={t} />
+                    </div>
+                  ))}
+                </div>
+
+                {/* Botones de navegación */}
+                <div className="absolute inset-0 pointer-events-none">
+                  <div className="absolute left-2 top-1/2 -translate-y-1/2 pointer-events-auto">
+                    <button
+                      type="button"
+                      aria-label="Anterior"
+                      className={"w-10 h-10 rounded-full bg-white/90 shadow flex items-center justify-center " + (currentIndex === 0 ? "opacity-50 pointer-events-none" : "")}
+                      onClick={prev}
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-5 h-5 text-[#23395d]">
+                        <path fill="currentColor" d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+                      </svg>
+                    </button>
+                  </div>
+
+                  <div className="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-auto">
+                    <button
+                      type="button"
+                      aria-label="Siguiente"
+                      className={"w-10 h-10 rounded-full bg-white/90 shadow flex items-center justify-center " + (currentIndex === itemCount - 1 ? "opacity-50 pointer-events-none" : "")}
+                      onClick={next}
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-5 h-5 text-[#23395d]">
+                        <path fill="currentColor" d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Desktop / Tablet: grid estándar */}
+              <div className="hidden sm:grid grid-cols-2 md:grid-cols-3 gap-6">
+                {testimonialsData.map((t) => (
+                  <TestimonialCard key={t.id} item={t} />
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
       </div>
     </section>
   );
