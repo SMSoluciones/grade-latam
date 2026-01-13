@@ -23,10 +23,10 @@ const Events = () => {
   <div className="flex flex-col md:flex-row items-center justify-center pt-44 pb-10 px-4 md:px-20 relative z-10">
         {/* Texto principal */}
   <div className="flex-1 text-left md:pr-8 md:pl-16" data-aos="fade-up">
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-[#20446C] mb-6 leading-tight break-words max-w-full" style={{fontFamily: 'Montserrat, sans-serif'}}>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-6xl font-bold text-[#20446C] mb-6 leading-tight break-words max-w-full" style={{fontFamily: 'Montserrat, sans-serif'}}>
             Cursos de <br /> actualización<br />cardiometabólica
           </h1>
-          <p className="text-base sm:text-lg md:text-2xl text-[#20446C] mb-8 max-w-lg" style={{fontFamily: 'Montserrat, sans-serif'}}>
+          <p className="text-base sm:text-lg md:text-xl lg:text-lg text-[#20446C] mb-8 max-w-lg" style={{fontFamily: 'Montserrat, sans-serif'}}>
             Accede a los mejores cursos y eventos para profesionales de la salud enfocados en cardiometabolismo.
           </p>
           <a href="https://www.gradelatam.com.ar/login" target="_blank" rel="noopener noreferrer">
@@ -37,7 +37,7 @@ const Events = () => {
         </div>
         {/* Imagen decorativa */}
         <div className="flex-1 flex items-center justify-center mt-8 md:mt-0" data-aos="zoom-out" data-aos-delay="200">
-          <img src={EvengLog} alt="Cursos cardiometabólicos" className="w-full max-w-xs sm:max-w-md md:max-w-3xl drop-shadow-xl" />
+          <img src={EvengLog} alt="Cursos cardiometabólicos" className="w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl drop-shadow-xl object-contain h-auto" />
         </div>
       </div>
 
