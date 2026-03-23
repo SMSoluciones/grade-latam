@@ -3,10 +3,33 @@ import EducationSVG from '../../assets/Education.svg';
 import ConsultSVG from '../../assets/Consult.svg';
 import PostSVG from '../../assets/post.svg';
 import AnimatedBlurBackground from '../../utils/AnimatedBlurBackground';
-import { useLanguage } from '../../context/LanguageContext';
 
  const AboutUs = () => {
-  const { t } = useLanguage();
+  const t = {
+    aboutPage: {
+      badge: 'Grade Latam | Sobre nosotros',
+      videoTitle: 'Bienvenidos a Grade Latam',
+      openVideo: 'Abrir video en modal',
+      closeVideo: 'Cerrar video',
+      community: 'Comunidad cientifica en America Latina',
+      title: 'Grade Latam',
+      paragraph1:
+        'Somos un grupo de opinion medica y actualizacion en America Latina, conformado por profesionales de reconocida trayectoria en instituciones cientificas nacionales e internacionales.',
+      paragraph2:
+        'Buscamos crear un espacio de intercambio y formacion continua, que acerque la ciencia a la practica clinica cotidiana, brindando asesoramiento a los actores de la salud.',
+      focus: 'Nuestro enfoque',
+      whatWeDo: 'Que hacemos',
+      consultingTitle: 'Consultoria',
+      consultingDescription:
+        'En el campo de la innovacion biotecnologica surge el gran desafio de su implementacion acortando las brechas entre las guias de practica clinica y la asistencia medica.',
+      educationTitle: 'Educacion',
+      educationDescription:
+        'Llevamos a cabo eventos basados en formatos dinamicos que puedan abordar con profundidad las diversas tematicas de los avances diagnosticos y terapeuticos.',
+      disseminationTitle: 'Difusion',
+      disseminationDescription:
+        'Compartimos material cientifico para la comunidad medica y el publico en general, de manera rigurosa, accesible y adaptada a sus necesidades.',
+    },
+  };
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
 
   useEffect(() => {

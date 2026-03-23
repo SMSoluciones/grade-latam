@@ -1,14 +1,13 @@
 import React from "react";
-import Corazon from "../../assets/Corazon.svg";
-import { Link } from "react-router-dom";
 import AnimatedBlurBackground from "../../utils/AnimatedBlurBackground";
+import HeartThree from "./HeartThree";
 
 const Header = () => {
   return (
     <header className="relative w-full min-h-screen overflow-visible lg:overflow-hidden pt-28 pb-14 md:pt-36 md:pb-20">
       <AnimatedBlurBackground />
 
-      <div className="section-shell flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-14">
+      <div className="section-shell flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-4">
         <div
           className="text-center lg:text-left flex-1"
           data-aos="fade-up"
@@ -36,16 +35,13 @@ const Header = () => {
         </div>
 
         <div
-          className="mt-8 lg:mt-0 flex-1 flex items-center justify-center"
+          className="mt-8 lg:mt-0 flex-1 flex items-center justify-center lg:justify-start lg:-ml-10"
           data-aos="zoom-out"
           data-aos-delay="200"
         >
-          <img
-            src={Corazon}
-            alt="Corazon"
-            className="w-full max-w-xs sm:max-w-xl lg:max-w-5xl animate-heartbeat"
-            loading="eager"
-          />
+          <div className="w-full max-w-[320px] sm:max-w-[460px] lg:max-w-[560px]">
+            <HeartThree />
+          </div>
         </div>
       </div>
     </header>

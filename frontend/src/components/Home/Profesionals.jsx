@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useLanguage } from "../../context/LanguageContext";
 
 // Images
 import LorenzattiImg from "../../assets/Profesionals/DoctorsSmall/Alberto-Lorenzatti.png";
@@ -76,7 +75,13 @@ const professionals = [
 ];
 
 const Profesionals = ({ onProfessionalClick }) => {
-  const { t, language } = useLanguage();
+  const t = {
+    professionals: {
+      title: "Equipo de expertos",
+      doctorPrefix: "Dr.",
+    },
+  };
+  const language = "es";
   const navigate = useNavigate();
 
   const handleClick = (prof) => {
