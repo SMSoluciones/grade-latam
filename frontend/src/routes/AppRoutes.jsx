@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
+import { ClipLoader } from "react-spinners";
 
 const Home = lazy(() => import("../components/Home/Home"));
 const About = lazy(() => import("../components/About/About"));
@@ -10,8 +11,8 @@ const AppRoutes = () => {
   return (
     <Suspense
       fallback={
-        <div className="min-h-[40vh] flex items-center justify-center text-primary font-semibold">
-          Cargando contenido...
+        <div className="min-h-[40vh] flex items-center justify-center" aria-label="Cargando contenido">
+          <ClipLoader color="#39669b" size={46} speedMultiplier={0.9} />
         </div>
       }
     >
