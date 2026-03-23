@@ -55,14 +55,14 @@ const TestimonialCard = ({ item }) => {
 
   return (
     <div
-      className="bg-white rounded-2xl shadow-lg p-6 relative text-left min-h-[200px]"
+      className="bg-white rounded-2xl shadow-lg p-5 pt-12 sm:p-6 sm:pt-6 relative text-left min-h-[220px] card-lift border border-slate-100"
       data-aos="fade-up"
     >
       {/* quote icon */}
-      <div className="absolute -top-4 left-6 bg-white rounded-full p-2 shadow-sm">
+      <div className="absolute top-4 left-5 sm:-top-4 sm:left-6 bg-[#f4f7ff] sm:bg-white rounded-full p-2 shadow-sm">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6 text-gray-300"
+          className="h-5 w-5 text-[#b9c7dc]"
           fill="currentColor"
           viewBox="0 0 24 24"
         >
@@ -70,7 +70,7 @@ const TestimonialCard = ({ item }) => {
         </svg>
       </div>
 
-      <p className="text-sm text-gray-700 mb-6 leading-6">{item.text}</p>
+      <p className="text-base sm:text-sm text-gray-700 mb-6 leading-7 sm:leading-6 mt-1 sm:mt-0">{item.text}</p>
 
       <div className="border-t border-gray-200 pt-4 mt-auto flex items-center gap-3">
         <div className="w-10 h-10 rounded-full bg-gradient-to-r from-[#eef2ff] to-[#dbeafe] flex items-center justify-center text-sm font-semibold text-[#23395d]">{initials}</div>
@@ -132,15 +132,15 @@ const Testimonials = () => {
   }, []);
 
   return (
-    <section className="w-full py-16">
+    <section className="w-full py-16 section-shell">
       <h2
-        className="text-3xl md:text-4xl font-bold text-center text-[#23395d] mb-8"
+        className="headline-md text-center text-primary mb-8"
         data-aos="fade-up"
       >
         Testimonios
       </h2>
 
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto">
           <div className="relative">
             <AnimatedBlurBackground />
             <div className="relative z-10">
@@ -149,22 +149,22 @@ const Testimonials = () => {
                 <div
                   ref={scrollRef}
                   onScroll={onScroll}
-                  className="flex gap-4 px-4 pb-4 overflow-x-auto snap-x snap-mandatory touch-pan-x scroll-smooth"
+                  className="flex gap-4 px-6 pb-4 overflow-x-auto snap-x snap-mandatory touch-pan-x scroll-smooth"
                 >
                   {testimonialsData.map((t) => (
-                    <div key={t.id} className="flex-shrink-0 w-full snap-center">
+                    <div key={t.id} className="flex-shrink-0 w-[calc(100vw-5.5rem)] max-w-[340px] snap-center">
                       <TestimonialCard item={t} />
                     </div>
                   ))}
                 </div>
 
                 {/* Botones de navegación */}
-                <div className="absolute inset-0 pointer-events-none">
-                  <div className="absolute left-2 top-1/2 -translate-y-1/2 pointer-events-auto">
+                <div className="mt-1 flex items-center justify-center gap-3">
+                  <div>
                     <button
                       type="button"
                       aria-label="Anterior"
-                      className={"w-10 h-10 rounded-full bg-white/90 shadow flex items-center justify-center " + (currentIndex === 0 ? "opacity-50 pointer-events-none" : "")}
+                      className={"w-9 h-9 rounded-full bg-white shadow flex items-center justify-center border border-slate-200 " + (currentIndex === 0 ? "opacity-50 pointer-events-none" : "")}
                       onClick={prev}
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-5 h-5 text-[#23395d]">
@@ -173,11 +173,23 @@ const Testimonials = () => {
                     </button>
                   </div>
 
-                  <div className="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-auto">
+                  <div className="flex items-center gap-2">
+                    {testimonialsData.map((t, idx) => (
+                      <button
+                        key={t.id}
+                        type="button"
+                        aria-label={`Ir al testimonio ${idx + 1}`}
+                        onClick={() => scrollToIndex(idx)}
+                        className={"h-2 rounded-full transition-all " + (idx === currentIndex ? "w-5 bg-[#1f4d84]" : "w-2 bg-slate-300")}
+                      />
+                    ))}
+                  </div>
+
+                  <div>
                     <button
                       type="button"
                       aria-label="Siguiente"
-                      className={"w-10 h-10 rounded-full bg-white/90 shadow flex items-center justify-center " + (currentIndex === itemCount - 1 ? "opacity-50 pointer-events-none" : "")}
+                      className={"w-9 h-9 rounded-full bg-white shadow flex items-center justify-center border border-slate-200 " + (currentIndex === itemCount - 1 ? "opacity-50 pointer-events-none" : "")}
                       onClick={next}
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-5 h-5 text-[#23395d]">

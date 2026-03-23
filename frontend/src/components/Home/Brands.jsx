@@ -11,45 +11,68 @@ const Brands = () => {
       id: 1,
       name: "Bago",
       logo: LogoBago,
+      widthClass: "max-w-[220px]",
     },
     {
       id: 2,
       name: "Siegfried",
       logo: LogoSiegfried,
+      widthClass: "max-w-[260px]",
     },
   ];
 
-  const settings = {
+  const mobileSettings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 1,
     slidesToScroll: 1,
+    centerMode: true,
+    centerPadding: "18px",
     autoplay: true,
-    autoplaySpeed: 3000,
-    arrows: true,
+    autoplaySpeed: 2800,
+    arrows: false,
   };
 
   return (
-    <div
-      style={{
-        backgroundColor: "white",
-        padding: "20px",
-        borderRadius: "10px",
-      }}
-    >
-      <Slider {...settings}>
-        {brands.map((brand) => (
-          <div key={brand.id} style={{ textAlign: "center" }}>
-            <img
-              src={brand.logo}
-              alt={brand.name}
-              style={{ maxWidth: "100px", margin: "0 auto" }}
-            />
-          </div>
-        ))}
-      </Slider>
-    </div>
+    <section className="section-shell py-12 md:py-14">
+      <div className="glass-panel rounded-3xl px-6 py-8 md:px-12 md:py-12 border border-[#d7e3f6]">
+        <h2 className="headline-md text-center text-primary mb-8 md:mb-10">Marcas aliadas</h2>
+
+        <div className="hidden md:grid md:grid-cols-2 gap-6 lg:gap-8 items-stretch">
+          {brands.map((brand) => (
+            <div
+              key={brand.id}
+              className="h-[170px] rounded-2xl bg-white/70 border border-[#dbe6f6] flex items-center justify-center px-6"
+            >
+              <img
+                src={brand.logo}
+                alt={brand.name}
+                className={`w-full ${brand.widthClass} object-contain`}
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
+
+        <div className="md:hidden">
+          <Slider {...mobileSettings}>
+            {brands.map((brand) => (
+              <div key={brand.id} className="px-2">
+                <div className="h-[130px] rounded-2xl bg-white/75 border border-[#dbe6f6] flex items-center justify-center px-6">
+                  <img
+                    src={brand.logo}
+                    alt={brand.name}
+                    className={`w-full ${brand.widthClass} object-contain`}
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            ))}
+          </Slider>
+        </div>
+      </div>
+    </section>
   );
 };
 

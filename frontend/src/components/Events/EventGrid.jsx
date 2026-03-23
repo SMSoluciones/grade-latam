@@ -49,10 +49,7 @@ const EventGrid = () => {
 	const [events, setEvents] = useState([]);
 
 	useEffect(() => {
-		// Simula fetch a base de datos
-		setTimeout(() => {
-			setEvents(mockEvents);
-		}, 500);
+		setEvents(mockEvents);
 	}, []);
 
 	return (
@@ -61,18 +58,17 @@ const EventGrid = () => {
 				{events.map((event) => (
 								<div
 									key={event.id}
-									className="bg-[#f5f8ff] rounded-2xl shadow-xl flex flex-col justify-end h-80 transform transition-transform duration-300 ease-in-out hover:scale-105 hover:z-10"
-									style={{ transitionDelay: '120ms' }}
+								className="bg-[#f5f8ff] rounded-2xl shadow-xl flex flex-col justify-end h-80 transition duration-300 card-lift"
 								>
 						<div className="flex flex-col justify-end h-full p-0">
 							<div className="bg-white rounded-b-2xl px-6 py-6 flex flex-col gap-2">
 								<div className="flex items-center gap-4">
 									<div className="flex flex-col items-center justify-center mr-2">
-										<span className="text-[#20446C] font-bold text-sm">{event.month}</span>
-										<span className="text-[#20446C] font-bold text-3xl leading-none">{event.day}</span>
+										<span className="text-primary font-bold text-sm">{event.month}</span>
+										<span className="text-primary font-bold text-3xl leading-none">{event.day}</span>
 									</div>
 									<div>
-										<span className="font-bold text-lg text-[#23395d]">{event.title}</span>
+										<span className="font-bold text-lg text-primary">{event.title}</span>
 										<p className="text-gray-500 text-sm mt-2">{event.description}</p>
 									</div>
 								</div>

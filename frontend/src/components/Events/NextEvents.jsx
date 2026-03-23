@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import EventCard from "./EventCard";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import { Link } from "react-router-dom";
 
 const API_URL = "http://localhost:3001/api/events";
 
@@ -10,27 +9,18 @@ const NextEvents = ({ hideAllEventsButton = false }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Inicializar AOS
-    AOS.init({
-      duration: 1000,
-      once: true,
-    });
-
-    // Simular fetch con evento mockeado
-    setTimeout(() => {
-      setEvents([
-        {
-          id: 1,
-          image:
-            "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
-          title: "Congreso Europeo de Cardiología 2025",
-          date: { day: "4", month: "OCT" },
-          description: "Breve descripción acerca del evento en sí.",
-          link: "#saber-mas",
-        },
-      ]);
-      setLoading(false);
-    }, 800);
+    setEvents([
+      {
+        id: 1,
+        image:
+          "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
+        title: "Congreso Europeo de Cardiología 2025",
+        date: { day: "4", month: "OCT" },
+        description: "Breve descripción acerca del evento en sí.",
+        link: "#saber-mas",
+      },
+    ]);
+    setLoading(false);
 
     // fetch(API_URL)
     //   .then((res) => res.json())
@@ -42,9 +32,9 @@ const NextEvents = ({ hideAllEventsButton = false }) => {
   }, []);
 
   return (
-    <section className="w-full py-16 mt-24">
+    <section className="w-full py-16 mt-20 section-shell">
       <h2
-        className="text-4xl font-bold text-center text-[#23395d] mb-12"
+        className="headline-md text-center text-primary mb-12"
         data-aos="fade-up"
       >
         Próximos eventos
@@ -79,12 +69,12 @@ const NextEvents = ({ hideAllEventsButton = false }) => {
         {/* Botón de todos los eventos condicional */}
         {!hideAllEventsButton && (
           <div className="flex justify-center mt-10" data-aos="fade-up">
-            <a
-              href="/eventos"
-              className="bg-[#4669a5] text-white font-bold py-3 px-8 rounded-full text-lg shadow hover:bg-[#23395d] transition"
+            <Link
+              to="/events"
+              className="cta-primary text-lg"
             >
               Todos los eventos
-            </a>
+            </Link>
           </div>
         )}
     </section>

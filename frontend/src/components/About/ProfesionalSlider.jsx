@@ -18,8 +18,6 @@ import All1 from "../../assets/Prof-Img/All1.jpg";
 import All2 from "../../assets/Prof-Img/All2.jpg";
 import All3 from "../../assets/Prof-Img/All3.jpg";
 import All5 from "../../assets/Prof-Img/All5.jpg";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 const professionalImages = {
   "Alberto Lorenzatti": [All1, All2, All3, All5, LorenzattiImg1, LorenzattiImg2],
@@ -51,8 +49,6 @@ const ProfesionalSlider = ({ professional }) => {
     if (modalOpen) {
       document.body.style.overflow = "hidden";
       window.addEventListener("keydown", handleKey);
-      // refrescar AOS para que la animación del modal se dispare
-      AOS.refresh();
     } else {
       document.body.style.overflow = "";
     }
@@ -62,11 +58,6 @@ const ProfesionalSlider = ({ professional }) => {
       window.removeEventListener("keydown", handleKey);
     };
   }, [modalOpen]);
-
-  // Inicializar AOS al montar el componente
-  useEffect(() => {
-    AOS.init({ duration: 500, once: true });
-  }, []);
 
   if (!professional || !professionalImages[professional.name]) return null;
 

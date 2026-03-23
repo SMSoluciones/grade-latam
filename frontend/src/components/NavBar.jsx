@@ -1,30 +1,16 @@
 import React, { useState, useEffect } from "react";
-import AOS from "aos";
 import Logo from "../assets/Logo.svg";
 import { Link } from "react-router-dom";
-import HamburgerMenu from "./HamburgerMenu"; // Importa el nuevo componente
+import HamburgerMenu from "./HamburgerMenu";
 
 const NavBar = ({ links = [] }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: true,
-    });
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 26);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -49,30 +35,27 @@ const NavBar = ({ links = [] }) => {
   return (
     <nav
       className={`fixed top-4 md:top-10 left-0 z-50 w-full transition-all duration-300 ${
-        isScrolled ? "bg-transparent" : "bg-transparent"
+        isScrolled ? "" : ""
       }`}
     >
       <div className="mx-4 md:mx-20">
         <div
-          className="flex justify-between items-center rounded-full px-4 md:px-6 py-3 md:py-4 transition-all duration-300 shadow-lg backdrop-blur-md"
-          style={{
-            background: "rgba(210, 222, 245, 0.18)",
-            backdropFilter: "blur(32px)",
-            WebkitBackdropFilter: "blur(32px)"
-          }}
+          className={`flex justify-between items-center rounded-full px-4 md:px-6 py-3 md:py-4 transition-all duration-300 border ${
+            isScrolled
+              ? "bg-white/95 border-[#a6bddf] shadow-lg"
+              : "glass-panel border-transparent"
+          }`}
         >
-          {/* Logo */}
           <Link to="/" className="text-xl font-bold">
-            <img src={Logo} alt="Grade" className="h-10 ml-5" />
+            <img src={Logo} alt="Grade" className="h-10 ml-2 md:ml-5" />
           </Link>
 
-          {/* Menú completo (visible en pantallas grandes) */}
           <div className="hidden xl:flex xl:items-center xl:space-x-8">
             <ul className="flex space-x-12">
               {links.map((link, index) => (
                 <li key={index}>
                   <Link
-                    to={link.href.startsWith("/") ? link.href : `/${link.href}`} // Asegura rutas absolutas
+                    to={link.href.startsWith("/") ? link.href : `/${link.href}`}
                     className="relative text-primary hover:text-secondary transition group font-bold"
                   >
                     {link.label}
@@ -81,19 +64,21 @@ const NavBar = ({ links = [] }) => {
                 </li>
               ))}
             </ul>
-            <Link
-              to="https://www.gradelatam.com.ar/login"
-              className="ml-6 bg-primary text-white font-bold py-2 px-6 rounded-full hover:bg-secondary transition"
+            <a
+              href="https://www.gradelatam.com.ar/login"
+              target="_blank"
+              rel="noreferrer"
+              className="ml-6 cta-primary"
             >
               Plataforma
-            </Link>
+            </a>
           </div>
 
-          {/* Hamburger Icon (visible en pantallas pequeñas e iPad) */}
           <div className="xl:hidden">
             <button
               onClick={toggleMenu}
               className="text-gray-600 focus:outline-none z-50 relative"
+              aria-label={isMenuOpen ? "Cerrar menu" : "Abrir menu"}
             >
               <svg
                 className={`w-8 h-8 transition-transform duration-300 ${
@@ -117,7 +102,6 @@ const NavBar = ({ links = [] }) => {
             </button>
           </div>
 
-          {/* Menú desplegable (visible en pantallas pequeñas e iPad) */}
           <HamburgerMenu
             links={links}
             isMenuOpen={isMenuOpen}

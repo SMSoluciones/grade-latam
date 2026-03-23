@@ -1,49 +1,49 @@
 import React from "react";
 import LogoWhite from "../assets/White-Logo.svg";
 import { Link } from "react-router-dom";
-import Youtube from "../assets/Youtube.svg";
 
 const Footer = () => {
+  const footerLinkClass =
+    "relative inline-block text-white/90 hover:text-white transition-colors duration-300 after:content-[''] after:block after:h-[2px] after:bg-white after:rounded-full after:mt-1 after:origin-left after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100";
+
   return (
-    <footer className="bg-gradient-to-r from-[#244469] to-[#4786CF] text-white py-12 px-6 md:py-24 md:px-32 rounded-t-[30px]">
-      <div className="container mx-auto flex flex-col lg:flex-row lg:justify-between lg:items-start gap-12 text-center lg:text-left">
-        {/* Logo centrado (en mobile y tablet) */}
-        <div className="flex flex-col items-center w-full lg:items-start lg:w-auto lg:flex-shrink-0">
+    <footer className="bg-gradient-to-r from-[#102c4f] via-[#1f4d84] to-[#4f86cf] text-white mt-10 rounded-t-[34px] pt-20 pb-16 md:pt-24 md:pb-20">
+      <div className="section-shell">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start text-center lg:text-left">
+          <div className="lg:col-span-4 flex flex-col items-center lg:items-start">
           <img
             src={LogoWhite}
             alt="GradeLatam Logo"
-            className="mb-4 w-full max-w-[140px] sm:max-w-[160px] md:max-w-[240px] lg:max-w-[300px] object-contain"
+            className="w-full max-w-[180px] sm:max-w-[220px] lg:max-w-[290px] object-contain"
           />
+          </div>
+
+          <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-10">
+            <div className="flex flex-col items-center sm:items-start">
+              <h3 className="font-bold mb-3 text-2xl">Información</h3>
+              <ul className="space-y-2 text-white/90 text-lg">
+                <li><Link to="/about" className={footerLinkClass}>Expertos</Link></li>
+                <li><Link to="/events" className={footerLinkClass}>Eventos y Cursos</Link></li>
+              </ul>
+            </div>
+
+            <div className="flex flex-col items-center sm:items-start">
+              <h3 className="font-bold mb-3 text-2xl">Plataforma</h3>
+              <a href="https://www.gradelatam.com.ar/login" target="_blank" rel="noreferrer" className={footerLinkClass + " text-lg"}>
+                Ingreso
+              </a>
+            </div>
+
+            <div className="flex flex-col items-center sm:items-start">
+              <h3 className="font-bold mb-3 text-2xl">Contacto</h3>
+              <Link to="/contact" className={footerLinkClass + " text-lg"}>Formulario de contacto</Link>
+            </div>
+          </div>
         </div>
 
-        {/* Columnas de enlaces: en mobile apilan, en md se muestran en fila */}
-        <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-12 w-full lg:flex-1 lg:justify-end">
-          {/* Información */}
-          <div className="flex flex-col items-center md:items-start md:text-left md:flex-1">
-            <h3 className="font-bold mb-2 text-xl">Información</h3>
-            <ul className="space-y-1">
-              <Link to="/about"><li>Expertos</li></Link>
-              <Link to="/events"><li>Eventos y Cursos</li></Link>
-            </ul>
-          </div>
-
-          {/* Plataforma */}
-          <div className="flex flex-col items-center md:items-start md:text-left md:flex-1">
-            <h3 className="font-bold mb-2 text-xl">Plataforma</h3>
-            <Link to="https://www.gradelatam.com.ar/login"><p>Ingreso</p></Link>
-          </div>
-
-          {/* Contacto */}
-          <div className="flex flex-col items-center md:items-start md:text-left md:flex-1">
-            <h3 className="font-bold mb-2 text-xl">Contacto</h3>
-            <Link to="/contact"><p>Formulario de contacto.</p></Link>
-          </div>
+        <div className="border-t border-white/25 mt-8 pt-5 text-center text-sm md:text-base text-white/85">
+          © 2025 Numedia all rights reserved. Designed by Numedia.
         </div>
-      </div>
-
-      {/* Línea y derechos reservados */}
-      <div className="border-t border-white mt-6 pt-4 text-center text-sm">
-        © 2025 Nümedia all rights reserved. Designed by Nümedia.
       </div>
     </footer>
   );
