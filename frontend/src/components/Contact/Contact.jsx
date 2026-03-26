@@ -6,7 +6,7 @@ const Contact = () => {
   return (
     <div className="relative min-h-screen flex flex-col justify-between">
       <AnimatedBlurBackground />
-      <main className="flex flex-col items-center justify-center flex-1 py-16 px-4 gap-10 mt-30 section-shell">
+      <main className="flex flex-col items-center justify-center flex-1 pt-28 md:pt-44 pb-14 px-4 gap-10 section-shell">
         <div className="w-full max-w-5xl mx-auto flex flex-col items-center">
           <div className="mb-6 w-full flex flex-col items-start text-left" data-aos="fade-down">
             <div className="px-6 py-2 rounded-full bg-primary-light shadow text-xs font-bold text-primary mb-6" style={{display: 'inline-block'}}>

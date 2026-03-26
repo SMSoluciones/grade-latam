@@ -46,8 +46,8 @@ const NavBar = ({ links = [] }) => {
               : "glass-panel border-transparent"
           }`}
         >
-          <Link to="/" className="text-xl font-bold">
-            <img src={Logo} alt="Grade" className="h-10 ml-2 md:ml-5" />
+          <Link to="/" className="text-xl font-bold flex items-center pl-1 md:pl-2">
+            <img src={Logo} alt="Grade" className="h-10" />
           </Link>
 
           <div className="hidden xl:flex xl:items-center xl:space-x-8">
@@ -74,10 +74,10 @@ const NavBar = ({ links = [] }) => {
             </a>
           </div>
 
-          <div className="xl:hidden">
+          <div className="xl:hidden flex items-center pr-1 md:pr-2">
             <button
               onClick={toggleMenu}
-              className="text-gray-600 focus:outline-none z-50 relative"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full text-gray-600 hover:bg-white/55 focus:outline-none z-50 relative transition"
               aria-label={isMenuOpen ? "Cerrar menu" : "Abrir menu"}
             >
               <svg

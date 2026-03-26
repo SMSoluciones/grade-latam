@@ -46,7 +46,7 @@ const HeartThree = () => {
     });
 
     const group = new THREE.Group();
-    group.position.x = -0.95;
+    group.position.x = -1.35;
     group.position.y = 1.05;
     scene.add(group);
 
@@ -106,11 +106,26 @@ const HeartThree = () => {
       group.add(heartMesh);
     });
 
+    const updateGroupPosition = (width) => {
+      if (width < 480) {
+        group.position.x = -1.80;
+        return;
+      }
+
+      if (width < 1024) {
+        group.position.x = -1.35;
+        return;
+      }
+
+      group.position.x = -0.95;
+    };
+
     const resize = () => {
       const width = container.clientWidth;
       const height = container.clientHeight;
       if (!width || !height) return;
 
+      updateGroupPosition(width);
       renderer.setSize(width, height, false);
       camera.aspect = width / height;
       camera.updateProjectionMatrix();

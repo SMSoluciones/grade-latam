@@ -57,7 +57,7 @@ import AnimatedBlurBackground from '../../utils/AnimatedBlurBackground';
 
   return (
   <>
-  <div className="relative flex flex-col items-center justify-center min-h-[600px] pt-36 md:pt-56 px-4 overflow-hidden">
+  <div className="relative flex flex-col items-center justify-center min-h-[600px] pt-28 md:pt-44 px-4 overflow-hidden">
       <AnimatedBlurBackground />
       <section className="w-full max-w-[1400px] section-shell">
         <div className="mb-6 md:mb-8 flex justify-center lg:justify-start" data-aos="fade-down">

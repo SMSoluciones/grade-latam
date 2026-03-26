@@ -4,7 +4,7 @@ import HeartThree from "./HeartThree";
 
 const Header = () => {
   return (
-    <header className="relative w-full min-h-screen overflow-visible lg:overflow-hidden pt-28 pb-14 md:pt-36 md:pb-20">
+    <header className="relative w-full min-h-screen overflow-visible lg:overflow-hidden pt-28 pb-14 md:pt-44 md:pb-20">
       <AnimatedBlurBackground />
 
       <div className="section-shell flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-4">
@@ -12,7 +12,7 @@ const Header = () => {
           className="text-center lg:text-left flex-1"
           data-aos="fade-up"
         >
-          <p className="inline-block mt-12 md:mt-16 mb-5 px-4 py-1 rounded-full bg-primary-light text-primary text-sm font-semibold tracking-wide">
+          <p className="inline-block mt-2 md:mt-0 mb-5 px-4 py-1 rounded-full bg-primary-light text-primary text-sm font-semibold tracking-wide">
             Ciencia aplicada para la practica clinica
           </p>
           <h1 className="headline-xl text-primary mb-4">
