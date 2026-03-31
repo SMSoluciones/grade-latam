@@ -28,12 +28,14 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
   font-family: "Epilogue", sans-serif;
   color: var(--color-text-main);
+  overflow-x: hidden;
   background:
     radial-gradient(circle at 7% 18%, rgba(108, 162, 234, 0.2), transparent 35%),
     radial-gradient(circle at 88% 12%, rgba(217, 44, 29, 0.12), transparent 32%),

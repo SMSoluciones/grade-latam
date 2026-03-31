@@ -4,7 +4,7 @@ import HeartThree from "./HeartThree";
 
 const Header = () => {
   return (
-    <header className="relative w-full min-h-screen overflow-visible lg:overflow-hidden pt-28 pb-14 md:pt-44 md:pb-20">
+    <header className="relative w-full min-h-screen overflow-x-hidden overflow-y-visible lg:overflow-hidden pt-28 pb-14 md:pt-44 md:pb-20">
       <AnimatedBlurBackground />
 
       <div className="section-shell flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-4">
