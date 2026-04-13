@@ -55,14 +55,13 @@ const TestimonialCard = ({ item }) => {
 
   return (
     <div
-      className="bg-white rounded-2xl shadow-lg p-5 pt-12 sm:p-6 sm:pt-6 relative text-left min-h-[220px] card-lift border border-slate-100"
+      className="theme-card rounded-2xl p-5 pt-12 sm:p-6 sm:pt-6 relative text-left min-h-[220px] card-lift"
       data-aos="fade-up"
     >
-      {/* quote icon */}
-      <div className="absolute top-4 left-5 sm:-top-4 sm:left-6 bg-[#f4f7ff] sm:bg-white rounded-full p-2 shadow-sm">
+      <div className="theme-chip absolute top-4 left-5 sm:-top-4 sm:left-6 rounded-full p-2 shadow-sm">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5 text-[#b9c7dc]"
+          className="h-5 w-5 text-primary"
           fill="currentColor"
           viewBox="0 0 24 24"
         >
@@ -70,13 +69,13 @@ const TestimonialCard = ({ item }) => {
         </svg>
       </div>
 
-      <p className="text-base sm:text-sm text-gray-700 mb-6 leading-7 sm:leading-6 mt-1 sm:mt-0">{item.text}</p>
+      <p className="text-base sm:text-sm text-muted mb-6 leading-7 sm:leading-6 mt-1 sm:mt-0">{item.text}</p>
 
-      <div className="border-t border-gray-200 pt-4 mt-auto flex items-center gap-3">
+      <div className="pt-4 mt-auto flex items-center gap-3 border-t border-[var(--panel-border)]">
         <div className="w-10 h-10 rounded-full bg-gradient-to-r from-[#eef2ff] to-[#dbeafe] flex items-center justify-center text-sm font-semibold text-[#23395d]">{initials}</div>
         <div>
-          <div className="font-semibold text-sm text-[#23395d]">{item.name}</div>
-          <div className="text-xs text-gray-400">{item.handle}</div>
+          <div className="font-semibold text-sm text-[var(--color-text-main)]">{item.name}</div>
+          <div className="text-xs text-[var(--color-text-soft)]">{item.handle}</div>
         </div>
       </div>
     </div>
@@ -132,18 +131,17 @@ const Testimonials = () => {
   }, []);
 
   return (
-    <section className="w-full py-16 section-shell">
+    <section className="relative w-full py-16 section-shell overflow-visible">
+      <AnimatedBlurBackground />
+
       <h2
-        className="headline-md text-center text-primary mb-8"
+        className="relative z-10 headline-md text-center text-primary mb-8"
         data-aos="fade-up"
       >
         Testimonios
       </h2>
 
-      <div className="max-w-7xl mx-auto">
-          <div className="relative">
-            <AnimatedBlurBackground />
-            <div className="relative z-10">
+      <div className="relative z-10 max-w-7xl mx-auto">
               {/* Mobile: slider 1 a 1 usando scroll-snap. Visible en <sm */}
               <div className="sm:hidden relative">
                 <div
@@ -164,10 +162,10 @@ const Testimonials = () => {
                     <button
                       type="button"
                       aria-label="Anterior"
-                      className={"w-9 h-9 rounded-full bg-white shadow flex items-center justify-center border border-slate-200 " + (currentIndex === 0 ? "opacity-50 pointer-events-none" : "")}
+                      className={"theme-icon-button w-9 h-9 rounded-full shadow flex items-center justify-center " + (currentIndex === 0 ? "opacity-50 pointer-events-none" : "")}
                       onClick={prev}
                     >
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-5 h-5 text-[#23395d]">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-5 h-5 text-[var(--color-text-main)]">
                         <path fill="currentColor" d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
                       </svg>
                     </button>
@@ -189,10 +187,10 @@ const Testimonials = () => {
                     <button
                       type="button"
                       aria-label="Siguiente"
-                      className={"w-9 h-9 rounded-full bg-white shadow flex items-center justify-center border border-slate-200 " + (currentIndex === itemCount - 1 ? "opacity-50 pointer-events-none" : "")}
+                      className={"theme-icon-button w-9 h-9 rounded-full shadow flex items-center justify-center " + (currentIndex === itemCount - 1 ? "opacity-50 pointer-events-none" : "")}
                       onClick={next}
                     >
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-5 h-5 text-[#23395d]">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-5 h-5 text-[var(--color-text-main)]">
                         <path fill="currentColor" d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
                       </svg>
                     </button>
@@ -206,8 +204,6 @@ const Testimonials = () => {
                   <TestimonialCard key={t.id} item={t} />
                 ))}
               </div>
-            </div>
-          </div>
       </div>
     </section>
   );

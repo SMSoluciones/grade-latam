@@ -27,7 +27,7 @@ const ProfesionalDetail = ({ professional }) => {
     <div className="flex flex-col items-center justify-center p-8">
       <div
         key={professional.name}
-        className="flex flex-col md:flex-row items-stretch gap-8 bg-[#ecf1fb] rounded-2xl shadow-lg max-w-[1300px] w-full overflow-hidden border border-[#cdd9eb]"
+        className="theme-card flex flex-col md:flex-row items-stretch gap-8 rounded-2xl max-w-[1300px] w-full overflow-hidden"
         data-aos="fade-up"
       >
         <div className="flex-1 w-full md:w-[60%] flex items-center justify-center p-0 m-0">
@@ -41,7 +41,7 @@ const ProfesionalDetail = ({ professional }) => {
           </div>
         </div>
         <div className="flex flex-col justify-center bg-gradient-to-t from-[#244469] to-[#4F8BD0] text-white p-6 rounded-b-lg md:rounded-r-lg md:rounded-bl-none w-full md:w-[40%]">
-          <div className="text-sm mb-2 bg-[#ecf1fb] text-[#11243B] font-semibold rounded-full px-3 py-1 max-w-fit">
+          <div className="theme-chip text-sm mb-2 font-semibold rounded-full px-3 py-1 max-w-fit text-[var(--color-text-main)]">
             Grade Latam | Sobre nosotros
           </div>
           <h2 className="text-3xl font-bold mb-4">Dr. <br />{professional.name}</h2>

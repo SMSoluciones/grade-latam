@@ -147,13 +147,12 @@ const HeartThree = () => {
         const baseX = -Math.PI / 2;
         const baseY = 0;
         const baseZ = Math.PI / 2 + elapsed * 0.07;
-        const hoverTiltX = pointerNormY * 0.06 * hoverMix;
-        const hoverTiltY = pointerNormX * 0.08 * hoverMix;
-        const hoverSpinBoost = 0.12 * hoverMix;
+        const hoverTiltX = pointerNormY * 0.035 * hoverMix;
+        const hoverTiltY = pointerNormX * 0.045 * hoverMix;
 
         heartMesh.rotation.x = baseX - hoverTiltX;
         heartMesh.rotation.y = baseY + hoverTiltY;
-        heartMesh.rotation.z = baseZ + elapsed * hoverSpinBoost;
+        heartMesh.rotation.z = baseZ;
         heartMesh.position.y = Math.sin(elapsed * 0.7) * 0.025;
       }
       renderer.render(scene, camera);

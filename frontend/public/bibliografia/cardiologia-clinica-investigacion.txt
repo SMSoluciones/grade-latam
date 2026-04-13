@@ -1,0 +1,22 @@
+GRADE LATAM
+Reporte institucional sobre adherencia terapeutica
+
+Tipo de documento
+Investigacion institucional - version inicial editable.
+
+Pregunta de trabajo
+Cuales son las principales barreras para la adherencia farmacologica y de seguimiento en pacientes con riesgo cardiovascular elevado.
+
+Hallazgos preliminares
+- La complejidad del esquema terapeutico afecta la continuidad.
+- La educacion del paciente mejora la persistencia en controles.
+- El seguimiento remoto facilita la deteccion temprana de abandono.
+
+Variables sugeridas
+- Edad y perfil de riesgo.
+- Numero de farmacos indicados.
+- Tiempo hasta primer control.
+- Adherencia autoreportada y adherencia objetiva.
+
+Proyeccion
+Este documento puede evolucionar a un informe ampliado con cohorte, metodologia y resultados consolidados.

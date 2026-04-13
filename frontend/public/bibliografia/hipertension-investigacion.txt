@@ -1,0 +1,22 @@
+GRADE LATAM
+Analisis interno sobre seguimiento y control tensional
+
+Tipo de documento
+Investigacion institucional - version inicial editable.
+
+Objetivo
+Describir oportunidades de mejora en el control tensional y en la continuidad del seguimiento clinico.
+
+Observaciones preliminares
+- Existe variabilidad en el registro de mediciones fuera del consultorio.
+- El refuerzo educativo mejora la calidad del automonitoreo.
+- La integracion de recordatorios puede aumentar la asistencia a controles.
+
+Indicadores propuestos
+- Porcentaje de pacientes con meta tensional alcanzada.
+- Frecuencia de automonitoreo informado.
+- Tiempo medio entre consultas.
+- Ajustes terapeuticos por periodo.
+
+Siguiente etapa
+Completar metodologia, poblacion analizada y resultados comparativos.

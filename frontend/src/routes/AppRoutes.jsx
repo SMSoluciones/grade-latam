@@ -6,6 +6,7 @@ const Home = lazy(() => import("../components/Home/Home"));
 const About = lazy(() => import("../components/About/About"));
 const Events = lazy(() => import("../components/Events/Events"));
 const Contact = lazy(() => import("../components/Contact/Contact"));
+const Bibliography = lazy(() => import("../components/Bibliography/Bibliography"));
 
 const AppRoutes = () => {
   return (
@@ -21,6 +22,7 @@ const AppRoutes = () => {
         <Route path="/about" element={<About />} />
         <Route path="/events" element={<Events />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/bibliografia" element={<Bibliography />} />
       </Routes>
     </Suspense>
   );

@@ -1,0 +1,22 @@
+GRADE LATAM
+Bibliografia especifica en hipertension arterial
+
+Objetivo
+Ordenar bibliografia prioritaria para diagnostico, seguimiento y tratamiento de hipertension y riesgo vascular.
+
+Referencias sugeridas
+1. 2024 Latin American Hypertension Guidelines.
+2. 2023 ESH Guidelines for the management of arterial hypertension.
+3. 2018 ESC/ESH Guidelines for the management of arterial hypertension.
+4. Whelton PK, et al. 2017 ACC/AHA Guideline for High Blood Pressure in Adults.
+5. Documento de posicion sobre monitoreo ambulatorio y domiciliario de presion arterial.
+
+Puntos de lectura
+- Diagnostico confirmatorio.
+- Monitoreo ambulatorio y domiciliario.
+- Danio de organo blanco.
+- Tratamiento farmacologico combinado.
+- Seguimiento en escenarios de alto riesgo.
+
+Nota
+Compendio inicial para uso academico y actualizacion interna.

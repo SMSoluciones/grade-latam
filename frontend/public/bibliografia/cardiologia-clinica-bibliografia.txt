@@ -1,0 +1,21 @@
+GRADE LATAM
+Bibliografia esencial en prevencion y riesgo cardiovascular
+
+Objetivo
+Compilar referencias de consulta rapida para el equipo clinico y academico.
+
+Referencias sugeridas
+1. 2023 AHA/ACC Guideline for the Management of Chronic Coronary Disease.
+2. 2021 ESC Guidelines on cardiovascular disease prevention in clinical practice.
+3. Mach F, et al. 2019 ESC/EAS Guidelines for the management of dyslipidaemias.
+4. Virani SS, et al. 2023 Update on lipid management in high-risk patients.
+5. Arnett DK, et al. 2019 ACC/AHA Guideline on the Primary Prevention of Cardiovascular Disease.
+
+Ejes de lectura recomendados
+- Estratificacion de riesgo.
+- Prevencion primaria y secundaria.
+- Manejo de lipidos en alto y muy alto riesgo.
+- Adherencia terapeutica y seguimiento longitudinal.
+
+Nota
+Documento base editable para ampliar con nuevas referencias institucionales.

@@ -58,10 +58,10 @@ const EventGrid = () => {
 				{events.map((event) => (
 								<div
 									key={event.id}
-								className="bg-[#f5f8ff] rounded-2xl shadow-xl flex flex-col justify-end h-80 transition duration-300 card-lift"
+							className="theme-card-subtle rounded-2xl flex flex-col justify-end h-80 transition duration-300 card-lift"
 								>
 						<div className="flex flex-col justify-end h-full p-0">
-							<div className="bg-white rounded-b-2xl px-6 py-6 flex flex-col gap-2">
+							<div className="theme-card-strong rounded-b-2xl px-6 py-6 flex flex-col gap-2">
 								<div className="flex items-center gap-4">
 									<div className="flex flex-col items-center justify-center mr-2">
 										<span className="text-primary font-bold text-sm">{event.month}</span>
@@ -69,7 +69,7 @@ const EventGrid = () => {
 									</div>
 									<div>
 										<span className="font-bold text-lg text-primary">{event.title}</span>
-										<p className="text-gray-500 text-sm mt-2">{event.description}</p>
+										<p className="text-muted text-sm mt-2">{event.description}</p>
 									</div>
 								</div>
 							</div>

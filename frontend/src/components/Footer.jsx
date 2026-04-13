@@ -1,5 +1,5 @@
 import React from "react";
-import LogoWhite from "../assets/White-Logo.svg";
+import Logo from "../assets/Logo.svg";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -7,14 +7,14 @@ const Footer = () => {
     "relative inline-block text-white/90 hover:text-white transition-colors duration-300 after:content-[''] after:block after:h-[2px] after:bg-white after:rounded-full after:mt-1 after:origin-left after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100";
 
   return (
-    <footer className="bg-gradient-to-r from-[#102c4f] via-[#1f4d84] to-[#4f86cf] text-white mt-10 rounded-t-[34px] pt-20 pb-16 md:pt-24 md:pb-20">
+    <footer className="text-white mt-10 rounded-t-[34px] pt-20 pb-16 md:pt-24 md:pb-20" style={{ background: "var(--footer-bg)" }}>
       <div className="section-shell">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start text-center lg:text-left">
           <div className="lg:col-span-4 flex flex-col items-center lg:items-start">
           <img
-            src={LogoWhite}
+            src={Logo}
             alt="GradeLatam Logo"
-            className="w-full max-w-[180px] sm:max-w-[220px] lg:max-w-[290px] object-contain"
+            className="logo-white-filter w-full max-w-[180px] sm:max-w-[220px] lg:max-w-[290px] object-contain"
           />
           </div>
 
@@ -41,7 +41,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-white/25 mt-8 pt-5 text-center text-sm md:text-base text-white/85">
+        <div className="mt-8 pt-5 text-center text-sm md:text-base text-white/85" style={{ borderTop: "1px solid var(--footer-border)" }}>
           © 2025 Numedia all rights reserved. Designed by Numedia.
         </div>
       </div>

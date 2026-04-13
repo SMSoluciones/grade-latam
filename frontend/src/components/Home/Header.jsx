@@ -4,10 +4,10 @@ import HeartThree from "./HeartThree";
 
 const Header = () => {
   return (
-    <header className="relative w-full min-h-screen overflow-x-hidden overflow-y-visible lg:overflow-hidden pt-28 pb-14 md:pt-44 md:pb-20">
+    <header className="relative w-full overflow-x-hidden overflow-y-visible lg:overflow-hidden pt-28 pb-6 md:pt-44 md:pb-20 md:min-h-screen">
       <AnimatedBlurBackground />
 
-      <div className="section-shell flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-4">
+      <div className="section-shell flex flex-col lg:flex-row items-center justify-center gap-4 sm:gap-6 lg:gap-4">
         <div
           className="text-center lg:text-left flex-1"
           data-aos="fade-up"
@@ -35,7 +35,7 @@ const Header = () => {
         </div>
 
         <div
-          className="mt-8 lg:mt-0 flex-1 flex items-center justify-center lg:justify-start lg:-ml-10"
+          className="hidden md:flex mt-4 md:mt-6 lg:mt-0 flex-1 items-center justify-center lg:justify-start lg:-ml-10"
           data-aos="zoom-out"
           data-aos-delay="200"
         >

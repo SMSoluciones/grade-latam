@@ -1,8 +1,8 @@
 import React from "react";
 
 const EventCard = ({ image, title, date, description, link }) => (
-  <div className="flex flex-col md:flex-row items-stretch rounded-3xl overflow-hidden shadow-lg bg-white w-full max-w-5xl mx-auto card-lift border border-slate-100">
-    <div className="md:w-1/2 w-full flex items-center justify-center bg-gray-100">
+  <div className="theme-card flex flex-col md:flex-row items-stretch rounded-3xl overflow-hidden w-full max-w-5xl mx-auto card-lift">
+    <div className="md:w-1/2 w-full flex items-center justify-center bg-[var(--panel-subtle)]">
       <img
         src={image}
         alt={title}
@@ -10,10 +10,10 @@ const EventCard = ({ image, title, date, description, link }) => (
         loading="lazy"
       />
     </div>
-    <div className="md:w-1/2 w-full bg-gradient-to-br from-primary to-secondary-light text-white p-8 md:p-10 flex flex-col justify-between">
+    <div className="event-feature-panel md:w-1/2 w-full text-white p-8 md:p-10 flex flex-col justify-between">
       <div>
         <div className="flex justify-end">
-          <div className="bg-white rounded-lg px-3 py-2 text-center mb-4 w-fit">
+          <div className="event-date-chip rounded-lg px-3 py-2 text-center mb-4 w-fit shadow-sm">
             <span className="block text-xl font-bold text-primary">
               {date.day}
             </span>
@@ -29,7 +29,7 @@ const EventCard = ({ image, title, date, description, link }) => (
         href={link}
         target="_blank"
         rel="noopener noreferrer"
-        className="border-2 border-white rounded-full px-6 py-2 text-white font-bold hover:bg-white hover:text-primary transition w-fit self-start"
+        className="border-2 border-white/80 rounded-full px-6 py-2 text-white font-bold hover:bg-white hover:text-primary transition w-fit self-start"
       >
         Saber más &rarr;
       </a>
