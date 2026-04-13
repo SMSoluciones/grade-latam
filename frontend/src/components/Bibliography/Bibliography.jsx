@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import AnimatedBlurBackground from "../../utils/AnimatedBlurBackground";
 import corCovidLatamMainPdf from "../../library/CorCOVID LATAM main.pdf";
 import corCovidLatamPsyPdf from "../../library/CorCOVID LATAM Psy.pdf";
@@ -394,23 +393,6 @@ const Bibliography = () => {
         ))}
       </section>
 
-      <section className="section-shell relative z-10 mt-14 md:mt-18">
-        <div className="glass-panel rounded-[32px] border border-[var(--panel-border)] p-8 md:p-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
-          <div className="max-w-3xl">
-            <p className="text-sm md:text-base tracking-[0.16em] uppercase text-primary font-semibold mb-3">
-              Acceso rápido
-            </p>
-            <h2 className="headline-md text-[var(--color-text-main)]">Explorá materiales por categoría y descargalos en un clic</h2>
-            <p className="mt-4 text-lg text-muted leading-relaxed">
-              Esta estructura queda lista para seguir sumando bibliografía específica e investigaciones nuevas a medida que el equipo publique más contenidos.
-            </p>
-          </div>
-
-          <Link to="/about" className="cta-primary whitespace-nowrap">
-            Volver a expertos
-          </Link>
-        </div>
-      </section>
     </div>
   );
 };
