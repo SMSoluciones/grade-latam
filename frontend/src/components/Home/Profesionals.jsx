@@ -97,12 +97,12 @@ const Profesionals = ({ onProfessionalClick }) => {
       <h2 className="headline-md text-center text-primary mb-12">
         {t.professionals.title}
       </h2>
-      <div className="flex flex-wrap justify-center gap-8">
+      <div className="flex flex-col items-center gap-6 md:flex-row md:flex-nowrap md:justify-center md:overflow-x-auto md:pb-2">
         {professionals.map((prof, index) => (
           <div
             key={prof.id}
             onClick={() => handleClick(prof)}
-            className="cursor-pointer w-60 h-[350px] rounded-2xl shadow-lg overflow-hidden relative bg-[#d4d6d9] hover:bg-linear-to-t hover:from-[#ecf1fb] hover:to-[#4f8bd0] transition-colors duration-300 flex flex-col justify-end card-lift"
+            className="cursor-pointer w-52 h-[335px] md:shrink-0 rounded-2xl shadow-lg overflow-hidden relative bg-[#d4d6d9] hover:bg-linear-to-t hover:from-[#ecf1fb] hover:to-[#4f8bd0] transition-colors duration-300 flex flex-col justify-end card-lift"
             data-aos="fade-up"
             data-aos-delay={index * 100}
           >

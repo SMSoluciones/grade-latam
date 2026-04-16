@@ -1,7 +1,21 @@
 import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
+import { gsap } from "gsap";
 import { STLLoader } from "three/examples/jsm/loaders/STLLoader.js";
 import heartStlUrl from "../../assets/Heart.stl?url";
+import brainStlUrl from "../../assets/3D/Brain.stl?url";
+import liverStlUrl from "../../assets/3D/liver.stl?url";
+import kidneyStlUrl from "../../assets/3D/Kidney.stl?url";
+
+const ORGAN_MODELS = [
+  { label: "Corazon", url: heartStlUrl, fitSize: 3.45, color: 0xc61f36 },
+  { label: "Kidney", url: kidneyStlUrl, fitSize: 3.25, color: 0x9a4f52 },
+  { label: "Brain", url: brainStlUrl, fitSize: 3.25, color: 0xe4b2ba },
+  { label: "Liver", url: liverStlUrl, fitSize: 3.25, color: 0x6e3e2e },
+];
+
+const CAROUSEL_INTERVAL_MS = 3200;
+const ROTATION_SPEED = 0.14;
 
 const HeartThree = () => {
   const containerRef = useRef(null);
@@ -38,6 +52,8 @@ const HeartThree = () => {
       color: 0xd12b2f,
       metalness: 0.08,
       roughness: 0.24,
+      transparent: true,
+      opacity: 1,
       transmission: 0.03,
       clearcoat: 0.7,
       clearcoatRoughness: 0.22,
@@ -51,13 +67,18 @@ const HeartThree = () => {
     scene.add(group);
 
     const loader = new STLLoader();
-    let geometry = null;
-    let heartMesh = null;
+    const geometries = new Array(ORGAN_MODELS.length).fill(null);
+    let organMesh = null;
+    let currentOrganIndex = 0;
+    let carouselStarted = false;
+    let carouselIntervalId = 0;
+    let transitionTween = null;
     let disposed = false;
     let isHovering = false;
     let pointerNormX = 0;
     let pointerNormY = 0;
     let hoverMix = 0;
+    const transitionOffsets = { z: 0 };
 
     const handlePointerEnter = () => {
       isHovering = true;
@@ -81,29 +102,155 @@ const HeartThree = () => {
     container.addEventListener("pointerleave", handlePointerLeave);
     container.addEventListener("pointermove", handlePointerMove);
 
-    loader.load(heartStlUrl, (loadedGeometry) => {
-      if (disposed) {
-        loadedGeometry.dispose();
-        return;
-      }
-
-      loadedGeometry.computeVertexNormals();
-      loadedGeometry.center();
+    const prepareGeometry = (rawGeometry, fitSize) => {
+      rawGeometry.computeVertexNormals();
+      rawGeometry.center();
 
       const box = new THREE.Box3().setFromBufferAttribute(
-        loadedGeometry.getAttribute("position")
+        rawGeometry.getAttribute("position")
       );
       const size = new THREE.Vector3();
       box.getSize(size);
       const largest = Math.max(size.x, size.y, size.z) || 1;
-      const scale = 3.45 / largest;
-      loadedGeometry.scale(scale, scale, scale);
+      const scale = fitSize / largest;
+      rawGeometry.scale(scale, scale, scale);
 
-      geometry = loadedGeometry;
-      heartMesh = new THREE.Mesh(geometry, material);
-      heartMesh.rotation.x = -0.18;
-      heartMesh.rotation.z = 0.14;
-      group.add(heartMesh);
+      return rawGeometry;
+    };
+
+    const applyOrgan = (index) => {
+      const geometry = geometries[index];
+      if (!geometry || disposed) return;
+
+      if (!organMesh) {
+        organMesh = new THREE.Mesh(geometry, material);
+        organMesh.rotation.x = -0.18;
+        organMesh.rotation.z = 0.14;
+        group.add(organMesh);
+      } else {
+        organMesh.geometry = geometry;
+      }
+
+      material.color.setHex(ORGAN_MODELS[index].color);
+
+      currentOrganIndex = index;
+      container.setAttribute("aria-label", `${ORGAN_MODELS[index].label} 3D`);
+    };
+
+    const transitionToOrgan = (index) => {
+      if (!organMesh || !geometries[index] || disposed || index === currentOrganIndex) {
+        return;
+      }
+
+      if (transitionTween) {
+        transitionTween.kill();
+        transitionTween = null;
+      }
+
+      transitionTween = gsap.timeline({
+        onComplete: () => {
+          transitionTween = null;
+        },
+      });
+
+      transitionTween
+        .to(
+          material,
+          {
+            opacity: 0.18,
+            duration: 0.26,
+            ease: "power2.inOut",
+          },
+          0
+        )
+        .to(
+          organMesh.scale,
+          {
+            x: 0.83,
+            y: 0.83,
+            z: 0.83,
+            duration: 0.26,
+            ease: "power2.in",
+          },
+          0
+        )
+        .to(
+          transitionOffsets,
+          {
+            z: 0.45,
+            duration: 0.26,
+            ease: "power2.in",
+          },
+          0
+        )
+        .add(() => {
+          applyOrgan(index);
+        })
+        .to(
+          material,
+          {
+            opacity: 1,
+            duration: 0.32,
+            ease: "power2.out",
+          },
+          ">"
+        )
+        .to(
+          organMesh.scale,
+          {
+            x: 1,
+            y: 1,
+            z: 1,
+            duration: 0.4,
+            ease: "back.out(1.6)",
+          },
+          "<"
+        )
+        .to(
+          transitionOffsets,
+          {
+            z: 0,
+            duration: 0.4,
+            ease: "power2.out",
+          },
+          "<"
+        );
+    };
+
+    const getNextAvailableIndex = (fromIndex) => {
+      for (let step = 1; step <= geometries.length; step += 1) {
+        const candidate = (fromIndex + step) % geometries.length;
+        if (geometries[candidate]) return candidate;
+      }
+
+      return fromIndex;
+    };
+
+    const startCarousel = () => {
+      if (carouselStarted || disposed) return;
+      carouselStarted = true;
+      carouselIntervalId = window.setInterval(() => {
+        const nextIndex = getNextAvailableIndex(currentOrganIndex);
+        if (nextIndex !== currentOrganIndex) {
+          transitionToOrgan(nextIndex);
+        }
+      }, CAROUSEL_INTERVAL_MS);
+    };
+
+    ORGAN_MODELS.forEach((model, index) => {
+      loader.load(model.url, (loadedGeometry) => {
+        if (disposed) {
+          loadedGeometry.dispose();
+          return;
+        }
+
+        geometries[index] = prepareGeometry(loadedGeometry, model.fitSize);
+
+        if (!organMesh) {
+          applyOrgan(index);
+          startCarousel();
+        }
+      });
     });
 
     const updateGroupPosition = (width) => {
@@ -141,19 +288,19 @@ const HeartThree = () => {
 
     const animate = () => {
       const elapsed = clock.getElapsedTime();
-      if (heartMesh) {
+      if (organMesh) {
         hoverMix = THREE.MathUtils.lerp(hoverMix, isHovering ? 1 : 0, 0.04);
 
         const baseX = -Math.PI / 2;
         const baseY = 0;
-        const baseZ = Math.PI / 2 + elapsed * 0.07;
+        const baseZ = Math.PI / 2 + elapsed * ROTATION_SPEED + transitionOffsets.z;
         const hoverTiltX = pointerNormY * 0.035 * hoverMix;
         const hoverTiltY = pointerNormX * 0.045 * hoverMix;
 
-        heartMesh.rotation.x = baseX - hoverTiltX;
-        heartMesh.rotation.y = baseY + hoverTiltY;
-        heartMesh.rotation.z = baseZ;
-        heartMesh.position.y = Math.sin(elapsed * 0.7) * 0.025;
+        organMesh.rotation.x = baseX - hoverTiltX;
+        organMesh.rotation.y = baseY + hoverTiltY;
+        organMesh.rotation.z = baseZ;
+        organMesh.position.y = Math.sin(elapsed * 0.7) * 0.025;
       }
       renderer.render(scene, camera);
       rafId = requestAnimationFrame(animate);
@@ -164,11 +311,20 @@ const HeartThree = () => {
     return () => {
       disposed = true;
       cancelAnimationFrame(rafId);
+      window.clearInterval(carouselIntervalId);
+      if (transitionTween) {
+        transitionTween.kill();
+      }
       observer.disconnect();
       container.removeEventListener("pointerenter", handlePointerEnter);
       container.removeEventListener("pointerleave", handlePointerLeave);
       container.removeEventListener("pointermove", handlePointerMove);
-      if (geometry) geometry.dispose();
+      if (organMesh) {
+        group.remove(organMesh);
+      }
+      geometries.forEach((geometry) => {
+        if (geometry) geometry.dispose();
+      });
       material.dispose();
       renderer.dispose();
       if (renderer.domElement.parentNode === container) {

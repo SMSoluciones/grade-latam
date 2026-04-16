@@ -1,49 +1,123 @@
-import React, { useState, useEffect } from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { gsap } from "gsap";
 
-// Importa las imágenes de cada profesional
-import LorenzattiImg1 from "../../assets/Profesionals/DoctorsSmall/Alberto-Lorenzatti.png";
-import LorenzattiImg2 from "../../assets/Profesionals/DoctorsBig/Alberto-LorenzattiBG.png";
-import PiskorzImg1 from "../../assets/Profesionals/DoctorsSmall/Daniel-Piskorz.png";
-import PiskorzImg2 from "../../assets/Profesionals/DoctorsBig/Daniel-PiskorzBG.png";
-import LopezSantiImg1 from "../../assets/Profesionals/DoctorsSmall/Ricardo-Lopez-Santi.png";
-import LopezSantiImg2 from "../../assets/Profesionals/DoctorsBig/Ricardo-Lopez-SantiBG.png";
-import WyssImg1 from "../../assets/Profesionals/DoctorsSmall/Fernando-Wyss.png";
-import WyssImg2 from "../../assets/Profesionals/DoctorsBig/Fernando-WyssBG.png";
-import OsirisImg1 from "../../assets/Profesionals/DoctorsSmall/Osiris-Valdez-Tiburcio.png";
-import OsirisImg2 from "../../assets/Profesionals/DoctorsBig/Osiris-Valdez-TiburcioBG.png";
+// Importa las imágenes de actividades/eventos
 import All1 from "../../assets/Prof-Img/All1.jpg";
 import All2 from "../../assets/Prof-Img/All2.jpg";
 import All3 from "../../assets/Prof-Img/All3.jpg";
 import All5 from "../../assets/Prof-Img/All5.jpg";
 
+const eventGallery = [All1, All2, All3, All5];
+
 const professionalImages = {
-  "Alberto Lorenzatti": [All1, All2, All3, All5, LorenzattiImg1, LorenzattiImg2],
-  "Daniel Piskorz": [All1, All2, All3, All5, PiskorzImg1, PiskorzImg2],
-  "Ricardo Lopez Santi": [All1, All2, All3, All5, LopezSantiImg1, LopezSantiImg2],
-  "Fernando Wyss": [All1, All2, All3, All5, WyssImg1, WyssImg2],
-  "Osiris Valdez Tiburcio": [All1, All2, All3, All5, OsirisImg1, OsirisImg2],
+  "Alberto Lorenzatti": eventGallery,
+  "Daniel Piskorz": eventGallery,
+  "Ricardo Lopez Santi": eventGallery,
+  "Fernando Wyss": eventGallery,
+  "Osiris Valdez Tiburcio": eventGallery,
 };
 
 const ProfesionalSlider = ({ professional }) => {
-  const [modalOpen, setModalOpen] = useState(false);
-  const [selectedImg, setSelectedImg] = useState(null);
+  const sectionRef = useRef(null);
+  const viewportRef = useRef(null);
+  const trackRef = useRef(null);
+  const autoTweenRef = useRef(null);
+  const metricsRef = useRef({ loopDistance: 0, stepDistance: 320 });
 
-  const openModal = (img) => {
-    setSelectedImg(img);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const images = useMemo(
+    () => (professional ? professionalImages[professional.name] || [] : []),
+    [professional]
+  );
+
+  const openModal = (index) => {
+    setSelectedIndex(index);
     setModalOpen(true);
   };
 
   const closeModal = () => {
     setModalOpen(false);
-    setSelectedImg(null);
   };
+
+  const showPrevious = () => {
+    if (!images.length) return;
+    setSelectedIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  const showNext = () => {
+    if (!images.length) return;
+    setSelectedIndex((prev) => (prev + 1) % images.length);
+  };
+
+  useEffect(() => {
+    setSelectedIndex(0);
+    setModalOpen(false);
+  }, [professional?.name]);
+
+  useLayoutEffect(() => {
+    const section = sectionRef.current;
+    const viewport = viewportRef.current;
+    const track = trackRef.current;
+
+    if (!section || !viewport || !track || !images.length) return undefined;
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return undefined;
+
+    const buildAutoScroll = () => {
+      const items = track.querySelectorAll('[data-gallery-item="true"]');
+      if (items.length < images.length + 1) return;
+
+      const firstItem = items[0];
+      const firstDuplicate = items[images.length];
+      const secondItem = items[1];
+
+      const loopDistance = firstDuplicate.offsetLeft - firstItem.offsetLeft;
+      const stepDistance = secondItem
+        ? secondItem.offsetLeft - firstItem.offsetLeft
+        : firstItem.clientWidth;
+
+      metricsRef.current = {
+        loopDistance,
+        stepDistance,
+      };
+
+      gsap.set(track, { x: 0 });
+      if (autoTweenRef.current) {
+        autoTweenRef.current.kill();
+      }
+
+      autoTweenRef.current = gsap.to(track, {
+        x: -loopDistance,
+        duration: 26,
+        ease: "none",
+        repeat: -1,
+      });
+    };
+
+    buildAutoScroll();
+
+    const observer = new ResizeObserver(() => {
+      buildAutoScroll();
+    });
+    observer.observe(viewport);
+
+    return () => {
+      observer.disconnect();
+      if (autoTweenRef.current) {
+        autoTweenRef.current.kill();
+        autoTweenRef.current = null;
+      }
+    };
+  }, [images, professional?.name]);
 
   useEffect(() => {
     const handleKey = (e) => {
       if (e.key === "Escape") closeModal();
+      if (e.key === "ArrowLeft") showPrevious();
+      if (e.key === "ArrowRight") showNext();
     };
 
     if (modalOpen) {
@@ -59,59 +133,86 @@ const ProfesionalSlider = ({ professional }) => {
     };
   }, [modalOpen]);
 
-  if (!professional || !professionalImages[professional.name]) return null;
+  if (!professional || !images.length) return null;
 
-  const images = professionalImages[professional.name];
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: true,
-  };
+  const loopedImages = [...images, ...images];
 
   return (
-    <div className="w-full max-w-md mx-auto mt-8">
-      <Slider {...settings}>
-        {images.map((img, idx) => (
-          <div key={idx} className="flex justify-center items-center">
-            <img
-              src={img}
-              alt={professional.name + " " + idx}
-              className="rounded-xl w-full h-80 md:h-96 object-cover cursor-pointer"
-              onClick={() => openModal(img)}
-            />
+    <section ref={sectionRef} className="w-full max-w-[1240px] mx-auto px-2 sm:px-4">
+      <div className="theme-card-strong rounded-2xl overflow-hidden border border-[var(--panel-border)]">
+        <div ref={viewportRef} className="relative overflow-hidden px-4 sm:px-6 lg:px-8 py-5 sm:py-7">
+          <div ref={trackRef} className="flex w-max gap-3 sm:gap-4 lg:gap-6">
+            {loopedImages.map((img, idx) => (
+              <button
+                key={idx}
+                type="button"
+                onClick={() => openModal(idx % images.length)}
+                data-gallery-item="true"
+                className="group relative shrink-0 w-[76vw] sm:w-[52vw] lg:w-[34vw] xl:w-[30vw] 2xl:w-[26vw] aspect-[4/5] rounded-2xl overflow-hidden border border-white/15 bg-[#07182f]"
+                aria-label={`Abrir imagen ${(idx % images.length) + 1} en grande`}
+              >
+                <img
+                  src={img}
+                  alt={`${professional.name} galeria ${(idx % images.length) + 1}`}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.035]"
+                />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-[#031024]/80 via-[#072046]/38 to-transparent" />
+              </button>
+            ))}
           </div>
-        ))}
-      </Slider>
+        </div>
+      </div>
 
       {modalOpen && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[#020812]/88 backdrop-blur-[2px] px-4"
           role="dialog"
           aria-modal="true"
           onClick={closeModal}
         >
-          <div
-            className="relative p-4 max-w-4xl w-full"
-            onClick={(e) => e.stopPropagation()}
-            data-aos="zoom-in"
-            data-aos-duration="500"
-          >
+          <div className="relative w-full max-w-6xl" onClick={(e) => e.stopPropagation()}>
             <button
+              type="button"
               onClick={closeModal}
               aria-label="Cerrar"
-              className="absolute top-2 right-2 text-white text-3xl leading-none"
+              className="absolute -top-10 right-0 text-white/90 hover:text-white text-3xl leading-none"
             >
               ×
             </button>
-            <img src={selectedImg} alt={professional.name} className="w-full h-auto object-contain rounded-lg" />
+
+            <div className="relative rounded-2xl overflow-hidden border border-white/15 shadow-2xl bg-[#061427]">
+              <img
+                src={images[selectedIndex]}
+                alt={`${professional.name} ampliada ${selectedIndex + 1}`}
+                className="w-full max-h-[82vh] object-contain"
+              />
+
+              <button
+                type="button"
+                onClick={showPrevious}
+                aria-label="Imagen anterior"
+                className="absolute left-3 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-[#0b223f]/75 hover:bg-[#183b66] text-white text-xl"
+              >
+                ‹
+              </button>
+
+              <button
+                type="button"
+                onClick={showNext}
+                aria-label="Imagen siguiente"
+                className="absolute right-3 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-[#0b223f]/75 hover:bg-[#183b66] text-white text-xl"
+              >
+                ›
+              </button>
+
+              <div className="absolute bottom-3 right-3 rounded-full bg-[#081a31]/70 px-3 py-1 text-xs text-white/90">
+                {selectedIndex + 1} / {images.length}
+              </div>
+            </div>
           </div>
         </div>
       )}
-    </div>
+    </section>
   );
 };
 

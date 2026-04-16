@@ -9,14 +9,14 @@ import ScrollToTop from "../src/utils/ScrollToTop";
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(() => {
-    if (typeof window === "undefined") return false;
+    if (typeof window === "undefined") return true;
 
     const savedTheme = window.localStorage.getItem("grade-theme");
     if (savedTheme) {
       return savedTheme === "dark";
     }
 
-    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+    return true;
   });
 
   useEffect(() => {
