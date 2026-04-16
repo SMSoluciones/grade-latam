@@ -16,6 +16,7 @@ const ORGAN_MODELS = [
 
 const CAROUSEL_INTERVAL_MS = 3200;
 const ROTATION_SPEED = 0.14;
+const HEART_INDEX = 0;
 
 const HeartThree = () => {
   const containerRef = useRef(null);
@@ -246,8 +247,9 @@ const HeartThree = () => {
 
         geometries[index] = prepareGeometry(loadedGeometry, model.fitSize);
 
-        if (!organMesh) {
-          applyOrgan(index);
+        // Always start on heart, regardless of which STL finishes loading first.
+        if (!organMesh && geometries[HEART_INDEX]) {
+          applyOrgan(HEART_INDEX);
           startCarousel();
         }
       });
