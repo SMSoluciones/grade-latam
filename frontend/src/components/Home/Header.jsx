@@ -39,7 +39,7 @@ const Header = () => {
           data-aos="zoom-out"
           data-aos-delay="200"
         >
-          <div className="w-full max-w-[320px] sm:max-w-[460px] lg:max-w-[560px]">
+          <div className="w-full max-w-[320px] sm:max-w-[460px] lg:max-w-[560px] xl:max-w-[680px] 2xl:max-w-[780px]">
             <HeartThree />
           </div>
         </div>

@@ -29,7 +29,7 @@ const HeartThree = () => {
     scene.background = null;
 
     const camera = new THREE.PerspectiveCamera(36, 1, 0.1, 100);
-    camera.position.set(0, 0.2, 8.5);
+    camera.position.set(0, 0, 8.5);
 
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -63,8 +63,8 @@ const HeartThree = () => {
     });
 
     const group = new THREE.Group();
-    group.position.x = -1.35;
-    group.position.y = 1.05;
+    group.position.x = 0;
+    group.position.y = 0;
     scene.add(group);
 
     const loader = new STLLoader();
@@ -255,28 +255,27 @@ const HeartThree = () => {
       });
     });
 
-    const updateGroupPosition = (width) => {
-      if (width < 480) {
-        group.position.x = -1.80;
-        return;
-      }
-
-      if (width < 1024) {
-        group.position.x = -1.35;
-        return;
-      }
-
-      group.position.x = -0.95;
-    };
-
     const resize = () => {
       const width = container.clientWidth;
       const height = container.clientHeight;
       if (!width || !height) return;
 
-      updateGroupPosition(width);
       renderer.setSize(width, height, false);
       camera.aspect = width / height;
+
+      // Fit the organ so it always stays within the canvas on both axes
+      const fovRad = (camera.fov * Math.PI) / 180;
+      const aspect = width / height;
+      const halfExtent = 3.45 / 2; // largest fitSize / 2
+      const fill = 0.82;           // 82% fill — leaves breathing room
+      // distance needed to fit vertically
+      const zForHeight = (halfExtent / fill) / Math.tan(fovRad / 2);
+      // distance needed to fit horizontally (horizontal FOV depends on aspect)
+      const hFovRad = 2 * Math.atan(Math.tan(fovRad / 2) * aspect);
+      const zForWidth = (halfExtent / fill) / Math.tan(hFovRad / 2);
+      // use whichever requires the camera to be farther (most conservative)
+      camera.position.z = Math.max(zForHeight, zForWidth);
+
       camera.updateProjectionMatrix();
     };
 
